@@ -28,13 +28,14 @@ export class AppComponent {
   input = 0;
 
   showAnswer:any = null;
+  placeHolder:any = " ";
+  
 
   correct = 0;
   incorrect = 0;
 
   incorrectCount = 0;
-  
- 
+
 
 
   init(){
@@ -51,13 +52,17 @@ export class AppComponent {
   }
 
 
-  createTimer(){ this.interval = setInterval(() => { this.getSec = new Date().getSeconds(); if(this.getSec){this.seconds--;} if(this.seconds <= 0){this.seconds = 0; this.timesUp();} }, 1000); }
+  createTimer(){ this.interval = setInterval(() => { this.getSec = new Date().getSeconds(); if(this.getSec){this.seconds--;} if(this.seconds <= 0){this.timesUp();}}, 1000); }
 
 
   timesUp(){
 
+    this.seconds = 0;
+
+
     //[showAnswer is the input form value]
     this.showAnswer = this.answer;
+    this.placeHolder = this.showAnswer;
 
     if(this.showAnswer == this.answer && this.incorrectCount < 1){
 
@@ -65,6 +70,8 @@ export class AppComponent {
         this.incorrectCount++;
         console.log("Times UP:" + " " + this.answer + " " + "Incorrect:" + " " + this.incorrect);
     }
+
+    
 
   }
        
@@ -89,9 +96,12 @@ export class AppComponent {
   submit(event:any){
 
 
+
     if(this.input == this.answer){
 
         this.incorrectCount = 0;
+        this.placeHolder = " ";
+
 
         console.log("Answer Submitted After Revealed");
     }
@@ -99,7 +109,6 @@ export class AppComponent {
     if(this.input == this.answer && this.showAnswer != this.answer){
 
       this.correct++;
-      this.showAnswer = null;
 
       console.log("Answer was Correct");
     }
@@ -108,6 +117,7 @@ export class AppComponent {
 
       this.incorrect++;
       this.incorrectCount++;
+
 
       console.log("Submitted Answer was Incorrect");
     }

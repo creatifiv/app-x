@@ -1,0 +1,36 @@
+
+<div class="container">
+
+  <p id="timer">Timer <br/> {{seconds}} </p>
+
+  <p id="expression">  
+    <span class="factor1">{{f1}}</span> 
+    <br/>
+    <span class="factor2">{{f2}}</span>
+    <span id="operator">x</span>  
+  </p>
+  
+  <form action=" " id="form" (submit) ="submit($event)">
+
+    <input id="answer" autocomplete="off" [value] = "showAnswer" type="text" (input) = "getInput($event)" >
+
+  </form> 
+
+
+  <ul>
+  	<li>Ones: {{ one }}</li>
+  	<li>two's: {{two}}</li>
+  	<li>thress's: {{three}}</li>
+  	<li>Four's: {{four}}</li>
+  	<li></li>
+  	<li></li>
+  	<li></li>
+  	<li></li>
+  </ul>
+
+<p id="tally">
+  Correct: {{correct}} <br/>
+  	Incorrect: {{incorrect}}
+ </p>
+
+</div>

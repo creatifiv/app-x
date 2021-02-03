@@ -1,0 +1,79 @@
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+ul{
+  padding: 0 10px;
+}
+
+li{
+  list-style-type: none;
+}
+
+input:focus{
+
+  outline: 0;
+}
+
+.container{
+
+  position: relative;
+}
+
+#timer, #expression{
+
+  text-align: center;
+}
+
+#expression {
+
+  width: 200px;
+  height: auto;
+  font-size: 64px;
+
+  margin:40px 0 0;
+  position: relative;
+  border-bottom: 2px solid black;
+
+}
+
+#timer{
+
+  position: absolute;
+  right: 20px;
+  top: 0px;
+  margin: 0;
+  width: 40px;
+  font-size: 20px;
+}
+
+
+#answer{
+
+  width: 200px;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  border: none;
+  font-size: 64px;
+  font-weight: normal;
+}
+
+
+#operator{
+
+  position: absolute;
+  left: 20px;
+  bottom: 0;
+}
+
+#tally{
+
+  margin: 0 10px;
+}
+
+
+
+

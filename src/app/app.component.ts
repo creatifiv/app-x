@@ -1,13 +1,15 @@
-import { Component, VERSION, Output, Input, EventEmitter } from "@angular/core";
+import { Component, VERSION } from "@angular/core";
 
 @Component({
   selector: "my-app",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.css"]
 })
-export class AppComponent {
+export class AppComponent{
 
-  ngOnInit() { this.init(); }
+ ngOnInit() { this.init(); }
+
+  
 
 
 
@@ -22,13 +24,15 @@ export class AppComponent {
 
   interval: any;
 
-  seconds = 3;
+  seconds = 5;
   getSec = 0;
   answer = 0; 
   input = 0;
 
-  showAnswer:any = null;
-  placeHolder:any = " ";
+ placeHolder = " ";
+ showAnswer:any = null;
+
+ value:any = " ";
   
 
   correct = 0;
@@ -52,7 +56,7 @@ export class AppComponent {
   }
 
 
-  createTimer(){ this.interval = setInterval(() => { this.getSec = new Date().getSeconds(); if(this.getSec){this.seconds--;} if(this.seconds <= 0){this.timesUp();}}, 1000); }
+  createTimer(){ this.interval = setInterval(() => { this.getSec = new Date().getSeconds(); if(this.getSec){this.seconds--;} if(this.seconds <= 0){this.timesUp(); }}, 1000); }
 
 
   timesUp(){
@@ -62,6 +66,7 @@ export class AppComponent {
 
     //[showAnswer is the input form value]
     this.showAnswer = this.answer;
+    this.value = null;
     this.placeHolder = this.showAnswer;
 
     if(this.showAnswer == this.answer && this.incorrectCount < 1){
@@ -87,10 +92,21 @@ export class AppComponent {
 
   }
 
+
+
   getInput(event:any){ 
 
      this.input = Number(event.target.value);
+
   }
+
+  clearInput(event:any){
+
+      event.target.value = " ";
+
+    }
+
+
 
 
   submit(event:any){
@@ -101,7 +117,7 @@ export class AppComponent {
 
         this.incorrectCount = 0;
         this.placeHolder = " ";
-
+        this.value = " ";
 
         console.log("Answer Submitted After Revealed");
     }

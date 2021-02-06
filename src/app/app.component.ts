@@ -24,10 +24,10 @@ export class AppComponent{
 
   interval: any;
 
-  seconds = 5;
+  seconds = 20;
   getSec = 0;
   answer = 0; 
-  input = 0;
+  input:number = 1;
 
  placeHolder = " ";
  showAnswer:any = null;
@@ -38,8 +38,9 @@ export class AppComponent{
   correct = 0;
   incorrect = 0;
 
-  incorrectCount = 0;
+  putInPlace:any= " ";
 
+  incorrectCount = 0;
 
 
   init(){
@@ -69,11 +70,11 @@ export class AppComponent{
     this.value = null;
     this.placeHolder = this.showAnswer;
 
-    if(this.showAnswer == this.answer && this.incorrectCount < 1){
+    if(this.showAnswer === this.answer && this.incorrectCount < 1){
 
         this.incorrect++;
         this.incorrectCount++;
-        console.log("Times UP:" + " " + this.answer + " " + "Incorrect:" + " " + this.incorrect);
+        console.log("Times UP:" + " " + this.answer + " " + "Loop: Incorrect:" + " " + this.incorrect);
     }
 
     
@@ -83,7 +84,7 @@ export class AppComponent{
 
   multiply():void {
 
-    this.f1 = Math.floor(Math.random() * 12);
+    this.f1 = Math.floor(Math.random() * 0);
     this.f2 = Math.floor(Math.random() * 12);
 
     this.answer = this.f1 * this.f2;
@@ -94,70 +95,64 @@ export class AppComponent{
 
 
 
-  getInput(event:any){ 
+  getInput(event:any){
 
      this.input = Number(event.target.value);
+     console.log("Get Input" + " " + this.input);
 
   }
-
-  clearInput(event:any){
-
-      event.target.value = " ";
-
-    }
-
 
 
 
   submit(event:any){
 
+    if(this.input === this.answer){
 
-
-    if(this.input == this.answer){
-
-        this.incorrectCount = 0;
         this.placeHolder = " ";
         this.value = " ";
 
-        console.log("Answer Submitted After Revealed");
+        console.log("1.Answer Submitted After Revealed" + " " + "1." + this.incorrectCount);
     }
 
-    if(this.input == this.answer && this.showAnswer != this.answer){
+
+    if(this.input === this.answer && this.showAnswer !== this.answer && this.incorrectCount < 1){
 
       this.correct++;
+      this.incorrectCount = 0;
 
-      console.log("Answer was Correct");
+      console.log("2.Answer was Correct" + " " + "2." + this.incorrectCount + " " + "2. Input Type:" + " " + typeof this.input);
     }
 
-    if(this.input != this.answer && this.incorrectCount < 1){
+    if(this.input !== this.answer && this.incorrectCount < 1){
 
       this.incorrect++;
       this.incorrectCount++;
 
-
-      console.log("Submitted Answer was Incorrect");
+      console.log("3.Submitted Answer was Incorrect");
     }
 
 
     if(this.input === this.answer){
 
       event.target.reset();
-
       this.seconds = 7;
       this.multiply();
-      
+      this.incorrectCount = 0;
+      this.input = 1;
+
+      console.log("4. Reset");
 
       if(this.f1 == 1){
 
-        this.one[this.x] = this.f1;
+        this.one[this.x] = this.f1 && this.f2;
         this.x++;
 
-        console.log(this.one);
+        console.log(this.one[this.x]);
       }
 
     } else{
 
-      console.log("Wrong answer");
+      console.log("5.Wrong answer");
     }
 
   }

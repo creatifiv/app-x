@@ -18,14 +18,14 @@
 
 
   <ul>
-  	<li>Ones: {{ one }}</li>
-  	<li>two's: {{two}}</li>
-  	<li>thress's: {{three}}</li>
-  	<li>Four's: {{four}}</li>
-  	<li></li>
-  	<li></li>
-  	<li></li>
-  	<li></li>
+  	<li *ngFor = "let o of ones">Ones: {{ones}}</li>
+  	<li *ngFor = "let t of two">two's: {{two}}</li>
+  	<li *ngFor = "let th of three">thress's: {{three}}</li>
+  	<li *ngFor = "let f of four">Four's: {{four}}</li>
+  	<li *ngFor = "let fv of five">Five's: {{five}}</li>
+  	<li *ngFor = "let sx of six">Six's: {{six}}</li>
+  	<li *ngFor = "let svn of seven">Seven's: {{seven}}</li>
+  	<li *ngFor = "let egt of eight">Eight's: {{eight}}</li>
   </ul>
 
 <p id="tally">

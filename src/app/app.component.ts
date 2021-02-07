@@ -13,7 +13,8 @@ export class AppComponent{
 
 
 
-  zero = []; one: number[] = [];two = []; three = []; four = []; five = []; six = []; seven = []; eight = []; nine = []; ten = []; eleven = []; twelve = [];
+  zero = []; ones:any = [];two:any = []; three:any = []; four:any = []; five:any = []; six:any = []; seven:any = []; eight:any = []; nine:any = []; ten:any = []; eleven:any = []; twelve:any = [];
+
 
   x = 0;
 
@@ -84,7 +85,7 @@ export class AppComponent{
 
   multiply():void {
 
-    this.f1 = Math.floor(Math.random() * 0);
+    this.f1 = Math.floor(Math.random() * 12);
     this.f2 = Math.floor(Math.random() * 12);
 
     this.answer = this.f1 * this.f2;
@@ -99,8 +100,70 @@ export class AppComponent{
 
      this.input = Number(event.target.value);
      console.log("Get Input" + " " + this.input);
-
   }
+
+  tally(){
+
+
+    switch(this.f1 || this.f2){
+
+      case 1:
+      this.ones[this.x] = this.f1 + " x " + this.f2;
+      break;
+
+      case 2:
+      this.two[this.x] = this.f1 + " x " + this.f2;
+      break;
+
+      case 3:
+      this.three[this.x] = this.f1 + " x " + this.f2;
+      break;
+
+      case 4:
+      this.four[this.x] = this.f1 + " x " + this.f2;
+      break;
+
+      case 5:
+      this.two[this.x] = this.f1 + " x " + this.f2;
+      break;
+
+      case 6:
+      this.six[this.x] = this.f1 + " x " + this.f2;
+      break;
+
+      case 7:
+      this.seven[this.x] = this.f1 + " x " + this.f2;
+      break;
+
+      case 8:
+      this.eight[this.x] = this.f1 + " x " + this.f2;
+      break;
+
+      case 9:
+      this.nine[this.x] = this.f1 + " x " + this.f2;
+      break;
+
+      case 10:
+      this.ten[this.x] = this.f1 + " x " + this.f2;
+      break;
+
+      case 11:
+      this.eleven[this.x] = this.f1 + " x " + this.f2;
+      break;
+
+      case 12:
+      this.twelve[this.x] = this.f1 + " x " + this.f2;
+      break;
+    
+
+    }
+
+
+    console.log(this.ones);
+}
+
+    
+  
 
 
 
@@ -119,6 +182,7 @@ export class AppComponent{
 
       this.correct++;
       this.incorrectCount = 0;
+      //this.tally();
 
       console.log("2.Answer was Correct" + " " + "2." + this.incorrectCount + " " + "2. Input Type:" + " " + typeof this.input);
     }
@@ -142,17 +206,6 @@ export class AppComponent{
 
       console.log("4. Reset");
 
-      if(this.f1 == 1){
-
-        this.one[this.x] = this.f1 && this.f2;
-        this.x++;
-
-        console.log(this.one[this.x]);
-      }
-
-    } else{
-
-      console.log("5.Wrong answer");
     }
 
   }

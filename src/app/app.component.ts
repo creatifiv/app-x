@@ -25,12 +25,12 @@ export class AppComponent{
 
   interval: any;
 
-  seconds = 20;
+  seconds = 200;
   getSec = 0;
   answer = 0; 
   input:number = 1;
 
- placeHolder = " ";
+ placeHolder:any = " ";
  showAnswer:any = null;
 
  value:any = " ";
@@ -42,6 +42,7 @@ export class AppComponent{
   putInPlace:any= " ";
 
   incorrectCount = 0;
+  attempt = 0;
 
 
   init(){
@@ -175,22 +176,35 @@ export class AppComponent{
         this.value = " ";
 
         console.log("1.Answer Submitted After Revealed" + " " + "1." + this.incorrectCount);
-    }
 
+    }
 
     if(this.input === this.answer && this.showAnswer !== this.answer && this.incorrectCount < 1){
 
       this.correct++;
       this.incorrectCount = 0;
-      //this.tally();
+      this.tally();
 
       console.log("2.Answer was Correct" + " " + "2." + this.incorrectCount + " " + "2. Input Type:" + " " + typeof this.input);
+    }
+
+    if(this.input !== this.answer){
+
+      this.attempt++;
+      event.target.reset();
+      console.log("Attempt " + this.attempt);
+    }
+
+    if(this.input !== this.answer && this.attempt == 2){
+
+      this.placeHolder = this.answer;
     }
 
     if(this.input !== this.answer && this.incorrectCount < 1){
 
       this.incorrect++;
       this.incorrectCount++;
+      
 
       console.log("3.Submitted Answer was Incorrect");
     }
@@ -199,7 +213,8 @@ export class AppComponent{
     if(this.input === this.answer){
 
       event.target.reset();
-      this.seconds = 7;
+      //this.seconds = 7;
+      this.attempt = 0;
       this.multiply();
       this.incorrectCount = 0;
       this.input = 1;

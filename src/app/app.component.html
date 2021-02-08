@@ -3,6 +3,8 @@
 
   <p id="timer">Timer <br/> {{seconds}} </p>
 
+ <!-- <button (click) = "resutls($event)">Show Resutls</button> -->
+
   <p id="expression">  
     <span class="factor1">{{f1}}</span> 
     <br/>
@@ -17,16 +19,8 @@
   </form> 
 
 
-  <ul>
-  	<li *ngFor = "let o of ones">Ones: {{ones}}</li>
-  	<li *ngFor = "let t of two">two's: {{two}}</li>
-  	<li *ngFor = "let th of three">thress's: {{three}}</li>
-  	<li *ngFor = "let f of four">Four's: {{four}}</li>
-  	<li *ngFor = "let fv of five">Five's: {{five}}</li>
-  	<li *ngFor = "let sx of six">Six's: {{six}}</li>
-  	<li *ngFor = "let svn of seven">Seven's: {{seven}}</li>
-  	<li *ngFor = "let egt of eight">Eight's: {{eight}}</li>
-  </ul>
+ <!-- <p *ngFor = "let one of ones">{{ones}}</p> -->
+  
 
 <p id="tally">
   Correct: {{correct}} <br/>

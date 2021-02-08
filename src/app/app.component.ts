@@ -9,49 +9,43 @@ export class AppComponent{
 
  ngOnInit() { this.init(); }
 
-  
-
 
 
   zero = []; ones:any = [];two:any = []; three:any = []; four:any = []; five:any = []; six:any = []; seven:any = []; eight:any = []; nine:any = []; ten:any = []; eleven:any = []; twelve:any = [];
 
 
-  x = 0;
+
+  x = 0; //Logs multiples correct
 
   f1 = 0;
-
   f2 = 0;
+
+  showResults = false;
 
 
   interval: any;
 
-  seconds = 200;
-  getSec = 0;
-  answer = 0; 
-  input:number = 1;
+  seconds = 60; //Set timer
 
- placeHolder:any = " ";
- showAnswer:any = null;
+  getSec = 0; //Get seconds via date object
+  answer = 0; //multiply answer
+  input:number = 1; // unser input
 
- value:any = " ";
+ placeHolder:any = " "; // plcace holder attribute variable
+ showAnswer:any = null; // stores answer from revealed from comleted timer 
+ value:any = " "; //shows after 2 faied attempts 
   
 
-  correct = 0;
-  incorrect = 0;
+  correct = 0; // correct tally
+  incorrect = 0; // incorrect tally
 
-  putInPlace:any= " ";
 
   incorrectCount = 0;
-  attempt = 0;
+  attempt = 0; // logs up to two attempts at answer
 
 
-  init(){
+  init(){ this.multiply(); this.createTimer(); }
 
-    this.multiply();
-
-   this.createTimer();
-
-  }
 
   stopTimer(event:any):any{
 
@@ -62,10 +56,10 @@ export class AppComponent{
   createTimer(){ this.interval = setInterval(() => { this.getSec = new Date().getSeconds(); if(this.getSec){this.seconds--;} if(this.seconds <= 0){this.timesUp(); }}, 1000); }
 
 
+
   timesUp(){
 
     this.seconds = 0;
-
 
     //[showAnswer is the input form value]
     this.showAnswer = this.answer;
@@ -106,7 +100,7 @@ export class AppComponent{
   tally(){
 
 
-    switch(this.f1 || this.f2){
+    switch(this.f1){
 
       case 1:
       this.ones[this.x] = this.f1 + " x " + this.f2;
@@ -160,7 +154,7 @@ export class AppComponent{
     }
 
 
-    console.log(this.ones);
+    console.log("Tallied:" + " " + this.f1 + "X" + this.f2);
 }
 
     
@@ -170,6 +164,7 @@ export class AppComponent{
 
   submit(event:any){
 
+    // if answer entered was correct but not necessarily right
     if(this.input === this.answer){
 
         this.placeHolder = " ";
@@ -178,28 +173,29 @@ export class AppComponent{
         console.log("1.Answer Submitted After Revealed" + " " + "1." + this.incorrectCount);
 
     }
-
+    //if input was correctfirst try
     if(this.input === this.answer && this.showAnswer !== this.answer && this.incorrectCount < 1){
 
       this.correct++;
       this.incorrectCount = 0;
+      this.x++;
       this.tally();
 
       console.log("2.Answer was Correct" + " " + "2." + this.incorrectCount + " " + "2. Input Type:" + " " + typeof this.input);
     }
-
+    //incorrect input/answer
     if(this.input !== this.answer){
 
       this.attempt++;
       event.target.reset();
       console.log("Attempt " + this.attempt);
     }
-
+    //revelas answer after two attempts
     if(this.input !== this.answer && this.attempt == 2){
 
       this.placeHolder = this.answer;
     }
-
+    // incorrect log
     if(this.input !== this.answer && this.incorrectCount < 1){
 
       this.incorrect++;
@@ -209,7 +205,7 @@ export class AppComponent{
       console.log("3.Submitted Answer was Incorrect");
     }
 
-
+    //reset epression & form
     if(this.input === this.answer){
 
       event.target.reset();

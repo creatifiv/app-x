@@ -1,0 +1,43 @@
+
+<div class="container-sm">
+
+<div class="row">
+
+  <div class="col">
+    <ul id="tally">
+    <li><span class="green">Correct:</span> {{correct}} </li>
+     <li><span class="red"> Incorrect:</span> {{incorrect}} </li>
+   </ul>
+  </div>
+
+  <div class="col">
+    <p id="timer">Timer <br/> {{seconds}} </p>
+  </div>
+
+</div>
+
+ <!-- <button (click) = "resutls($event)">Show Resutls</button> -->
+
+<div class="row">
+  <div class="col">
+
+    <p id="expression">  
+      <span class="factor1">{{f1}}</span> 
+      <span class="factor2">{{f2}}</span>
+      <span id="operator">x</span>  
+    </p>
+    
+    <form action=" " id="form" (submit) ="submit($event)">
+
+      <input id="input" type="text" [value] = "value" [placeholder] = "placeHolder" autocomplete="off"  (input) = "getInput($event)" >
+
+    </form> 
+
+  </div>
+</div>
+
+
+ <!-- <p *ngFor = "let one of ones">{{ones}}</p> -->
+  
+
+</div>

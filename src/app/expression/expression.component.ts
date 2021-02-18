@@ -12,7 +12,7 @@ export class ExpressionComponent implements OnInit {
   ngOnInit() { this.init(); }
 
 
-  zero = []; ones:any = [];two:any = []; three:any = []; four:any = []; five:any = []; six:any = []; seven:any = []; eight:any = []; nine:any = []; ten:any = []; eleven:any = []; twelve:any = [];
+  zero:any = []; ones:any = [];two:any = []; three:any = []; four:any = []; five:any = []; six:any = []; seven:any = []; eight:any = []; nine:any = []; ten:any = []; eleven:any = []; twelve:any = [];
 
 
 
@@ -25,7 +25,8 @@ export class ExpressionComponent implements OnInit {
 
   interval: any;
 
-  seconds = 180; //Set timer
+  seconds = 120; //Set timer
+  timerComplete = false;
 
   getSec = 0; //Get seconds via date object
   answer = 0; //multiply answer
@@ -46,6 +47,14 @@ export class ExpressionComponent implements OnInit {
 
   init(){ this.multiply(); this.createTimer(); }
 
+/*
+  setTimer(event:any, time:number){
+
+    this.seconds = time;
+
+  }
+  */
+
 
   stopTimer(event:any):any{
 
@@ -60,6 +69,7 @@ export class ExpressionComponent implements OnInit {
   timesUp(){
 
     this.seconds = 0;
+    this.timerComplete = true;
 
     //[showAnswer is the input form value]
     this.showAnswer = this.answer;
@@ -102,63 +112,68 @@ export class ExpressionComponent implements OnInit {
 
     switch(this.f1){
 
+
+      case 0:
+      this.zero[this.x] = this.f1 + " x " + this.f2 + " ";
+      break;
+
       case 1:
-      this.ones[this.x] = this.f1 + " x " + this.f2;
+      this.ones[this.x] = this.f1 + " x " + this.f2 + " ";
       break;
 
       case 2:
-      this.two[this.x] = this.f1 + " x " + this.f2;
+      this.two[this.x] = this.f1 + " x " + this.f2 + " ";
       break;
 
       case 3:
-      this.three[this.x] = this.f1 + " x " + this.f2;
+      this.three[this.x] = this.f1 + " x " + this.f2 + " ";
       break;
 
       case 4:
-      this.four[this.x] = this.f1 + " x " + this.f2;
+      this.four[this.x] = this.f1 + " x " + this.f2 + " ";
       break;
 
       case 5:
-      this.two[this.x] = this.f1 + " x " + this.f2;
+      this.two[this.x] = this.f1 + " x " + this.f2 + " ";
       break;
 
       case 6:
-      this.six[this.x] = this.f1 + " x " + this.f2;
+      this.six[this.x] = this.f1 + " x " + this.f2 + " ";
       break;
 
       case 7:
-      this.seven[this.x] = this.f1 + " x " + this.f2;
+      this.seven[this.x] = this.f1 + " x " + this.f2 + " ";
       break;
 
       case 8:
-      this.eight[this.x] = this.f1 + " x " + this.f2;
+      this.eight[this.x] = this.f1 + " x " + this.f2 + " ";
       break;
 
       case 9:
-      this.nine[this.x] = this.f1 + " x " + this.f2;
+      this.nine[this.x] = this.f1 + " x " + this.f2 + " ";
       break;
 
       case 10:
-      this.ten[this.x] = this.f1 + " x " + this.f2;
+      this.ten[this.x] = this.f1 + " x " + this.f2 + " ";
       break;
 
       case 11:
-      this.eleven[this.x] = this.f1 + " x " + this.f2;
+      this.eleven[this.x] = this.f1 + " x " + this.f2 + " ";
       break;
 
       case 12:
-      this.twelve[this.x] = this.f1 + " x " + this.f2;
+      this.twelve[this.x] = this.f1 + " x " + this.f2 + " ";
       break;
+
     
 
     }
 
-
     console.log("Tallied:" + " " + this.f1 + "X" + this.f2);
 }
 
-    
-  
+
+
 
 
 
@@ -178,8 +193,7 @@ export class ExpressionComponent implements OnInit {
 
       this.correct++;
       this.incorrectCount = 0;
-      this.x++;
-      this.tally();
+      
 
       console.log("2.Answer was Correct" + " " + "2." + this.incorrectCount + " " + "2. Input Type:" + " " + typeof this.input);
     }
@@ -200,6 +214,8 @@ export class ExpressionComponent implements OnInit {
 
       this.incorrect++;
       this.incorrectCount++;
+      this.tally();
+      this.x++;
       
 
       console.log("3.Submitted Answer was Incorrect");

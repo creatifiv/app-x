@@ -41,13 +41,23 @@ input:focus{
   color: red;
 }
 
-#timer,#tally{
+#timer{
+
+  text-align: center;
+}
+
+#timer, #tally{
+
+  margin-top: 10px;
+}
+
+#tally{
 
   margin-top: 10px;
 }
 
 
-#timer, #expression{
+ #expression{
 
   text-align: center;
 }

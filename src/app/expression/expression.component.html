@@ -1,43 +1,85 @@
 
-<div class="container-sm">
 
-<div class="row">
 
-  <div class="col">
-    <ul id="tally">
-    <li><span class="green">Correct:</span> {{correct}} </li>
-     <li><span class="red"> Incorrect:</span> {{incorrect}} </li>
-   </ul>
+<nav>
+
+  <div class="container">
+    <div class="row">
+        
+        <div class="col"><p></p></div>
+
+    </div>
   </div>
+  
+</nav>
 
-  <div class="col">
-    <p id="timer">Timer <br/> {{seconds}} </p>
+
+ <div class="container">
+
+  <div class="row">
+
+    <div class="col-sm-3">
+      <ul id="tally">
+      <li><span class="green">Correct:</span> {{correct}} </li>
+       <li><span class="red"> Incorrect:</span> {{incorrect}} </li>
+     </ul>
+    </div>
+
+    <div class="col-sm-2 offset-sm-7">
+      <p id="timer">Timer <br/> {{seconds}} </p>
+    </div>
+
   </div>
 
 </div>
+
 
  <!-- <button (click) = "resutls($event)">Show Resutls</button> -->
 
-<div class="row">
-  <div class="col">
+<div class="container">
 
-    <p id="expression">  
-      <span class="factor1">{{f1}}</span> 
-      <span class="factor2">{{f2}}</span>
-      <span id="operator">x</span>  
-    </p>
-    
-    <form action=" " id="form" (submit) ="submit($event)">
+  <div class="row">
+    <div class="col">
 
-      <input id="input" type="text" [value] = "value" [placeholder] = "placeHolder" autocomplete="off"  (input) = "getInput($event)" >
+      <p id="expression">  
+        <span class="factor1">{{f1}}</span> 
+        <span class="factor2">{{f2}}</span>
+        <span id="operator">x</span>  
+      </p>
+      
+      <form action=" " id="form" (submit) ="submit($event)">
 
-    </form> 
+        <input id="input" type="text" [value] = "value" [placeholder] = "placeHolder" autocomplete="off"  (input) = "getInput($event)" >
 
+      </form> 
+
+    </div>
   </div>
+
+
+  <div class="row" *ngIf = "timerComplete">
+    <div class="col">
+
+      <h2>Practice</h2>
+
+      <p>Zero: {{ zero.join(" ")}}</p>
+      <p>One's: {{ ones.join(" ")}}</p>
+      <p>Two's:{{  two.join(" ")}}</p>
+      <p>Three's {{ three.join(" ")}}</p>
+      <p>Forur's : {{ four.join(" ")}}</p>
+      <p>Five's: {{ five.join(" ")}}</p>
+      <p>Six's: {{ six.join(" ")}}</p>
+      <p>Seven's: {{ seven.join(" ")}}</p>
+      <p>Eight's: {{ eight.join(" ")}}</p>
+      <p>Nine's: {{ nine.join(" ")}}</p>
+      <p>Ten's: {{ ten.join(" ")}}</p>
+      <p>Eleven's:{{ eleven.join(" ")}}</p>
+      <p>Twelve's: {{ twelve.join(" ")}}</p>
+    </div>
+  </div>
+
 </div>
 
 
- <!-- <p *ngFor = "let one of ones">{{ones}}</p> -->
-  
 
-</div>
+

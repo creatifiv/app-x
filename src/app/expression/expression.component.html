@@ -1,42 +1,27 @@
 
 
 
-<nav>
-
-  <div class="container">
-    <div class="row">
-        
-        <div class="col"><p></p></div>
-
-    </div>
-  </div>
-  
-</nav>
-
-
  <div class="container">
 
   <div class="row">
 
-    <div class="col-sm-3">
+    <div class="col-sm-6">
       <ul id="tally">
       <li><span class="green">Correct:</span> {{correct}} </li>
        <li><span class="red"> Incorrect:</span> {{incorrect}} </li>
      </ul>
     </div>
 
-    <div class="col-sm-2 offset-sm-7">
-      <p id="timer">Timer <br/> {{seconds}} </p>
+    <div class="col-sm-3 offset-sm-3">
+      <p id="timer"><b>Timer:</b> {{seconds}} </p>
     </div>
 
   </div>
 
-</div>
 
 
  <!-- <button (click) = "resutls($event)">Show Resutls</button> -->
 
-<div class="container">
 
   <div class="row">
     <div class="col">
@@ -49,13 +34,15 @@
       
       <form action=" " id="form" (submit) ="submit($event)">
 
-        <input id="input" type="text" [value] = "value" [placeholder] = "placeHolder" autocomplete="off"  (input) = "getInput($event)" >
+        <input id="input" type="number" [value] = "value" [placeholder] = "placeHolder" autocomplete="off"  (input) = "getInput($event)" >
 
       </form> 
 
     </div>
   </div>
 
+
+<!--
 
   <div class="row" *ngIf = "timerComplete">
     <div class="col">
@@ -78,7 +65,10 @@
     </div>
   </div>
 
+-->
+
 </div>
+
 
 
 

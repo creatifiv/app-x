@@ -25,7 +25,7 @@ export class ExpressionComponent implements OnInit {
 
   interval: any;
 
-  seconds = 120; //Set timer
+  seconds = 60; //Set timer
   timerComplete = false;
 
   getSec = 0; //Get seconds via date object

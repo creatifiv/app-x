@@ -5,15 +5,22 @@ p {
 }
 
 
-li{
-  list-style-type: none;
-  font-weight: bold;
-}
-
 
 input:focus{
 
   outline: 0;
+}
+
+/* Chrome, Safari, Edge, Opera - remove arrows from number input */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
 
 .factor1,.factor2{
@@ -23,14 +30,31 @@ input:focus{
   line-height: 125px;
 }
 
-#operator{
 
-  position: absolute;
-  left: 20px;
-  bottom: 0;
-  line-height: 125px;
+#timer, #tally{
+
+  margin-top: 10px;
+  font-size: 15px;
 }
 
+#tally{
+
+  height: auto;
+}
+
+#tally li{
+
+  display: inline-block;
+  float: left;
+  margin: 0 5px;
+  list-style-type: none;
+}
+
+
+.green, .red{
+
+  font-weight: bold;
+}
 
 .green{
 
@@ -41,25 +65,18 @@ input:focus{
   color: red;
 }
 
-#timer{
-
-  text-align: center;
-}
-
-#timer, #tally{
-
-  margin-top: 10px;
-}
-
-#tally{
-
-  margin-top: 10px;
-}
-
 
  #expression{
 
   text-align: center;
+}
+
+#operator{
+
+  position: absolute;
+  left: 20px;
+  bottom: 0;
+  line-height: 125px;
 }
 
 #form{
@@ -76,19 +93,11 @@ input:focus{
   height: auto;
   font-size: 100px;
 
-  margin:50px auto 0;
+  margin:25px auto 0;
   position: relative;
   border-bottom: 2px solid black;
 
 }
-
-#timer{
-
-  /*position: absolute; right: 20px; top: 0px; width: 40px; */
- 
-  font-size: 20px;
-}
-
 
 #input{
 
@@ -99,20 +108,6 @@ input:focus{
   border: 1px solid #CDCDCD;
   font-size: 90px;
   font-weight: normal;
-}
-
-
-#tally{
-
-  margin: 5px 0 0;
-}
-
-#tally li{
-
-  display: inline-block; 
-  float: left;
-  margin: 0 5px;
-
 }
 
 

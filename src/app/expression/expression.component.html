@@ -5,37 +5,41 @@
 
   <div class="row">
 
-    <div class="col-sm-6">
-      <ul id="tally">
+    <div class="col-sm-3">
+      <ul id="tally" class="clearfix">
       <li><span class="green">Correct:</span> {{correct}} </li>
        <li><span class="red"> Incorrect:</span> {{incorrect}} </li>
      </ul>
     </div>
 
+    <div class="col-sm-2 offset-sm-2">
+      <p id="timer"><b>Timer:</b> {{seconds}} </p>
+    </div>
 
-    <div id="settings" class="col-sm-3 offset-sm-3">
+
+    <div id="settings" class="col-sm-3 offset-sm-2">
       <i class="bi bi-gear" (click)="showSettings($event)"></i>
 
       <div [style.display] = "display" class="settings-box">
-        <ul class="settings">
-          <li (click)="changeSettings($event, 60)"><i class="bi bi-plus"></i>60 s</li>
-          <li (click)="changeSettings($event, 180)"><i class="bi bi-plus"></i>180 s</li>
+        <ul class="settings-ul">
+          <li (click)="changeSettings($event, 60)"><i class="bi bi-plus"></i>1 m</li>
+          <li (click)="changeSettings($event, 180)"><i class="bi bi-plus"></i>3 m</li>
         </ul>
       </div>
-    </div>
 
+    </div>
   </div>
 
 
 
- <!-- <button (click) = "resutls($event)">Show Resutls</button> -->
+ <!-- <button (click) = "resutls($event)">Show Resutls</button>
 
  <div class="row">
-  <div class="col-sm-3 offset-sm-8">
+  <div class="col-sm-3 offset-sm-8"> 
       <p id="timer"><b>Timer</b><br/> {{seconds}} </p>
   </div>
    
- </div>
+ </div>-->
 
 
   <div class="row">

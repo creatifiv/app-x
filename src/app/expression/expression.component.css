@@ -25,6 +25,13 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
+.clearfix::after{
+
+  content: " ";
+  clear: both;
+  display: table;
+}
+
 .factor1,.factor2{
 
   display: block;
@@ -32,43 +39,61 @@ input[type=number] {
   line-height: 125px;
 }
 
+.bi-gear{
+
+  float: right;
+  font-size: 22px !important;
+}
+
+#settings{
+
+  position: relative;
+}
+
 
 .settings-box{
 
   width: 100px;
   position: absolute;
-  border: 1px solid black;
+  right: 0;
+  top: 40px;
+  margin-right: 12px;
+  border: 1px solid #ccc;
   border-bottom: transparent;
   background-color: white;
 }
 
-.settings{
+.settings-ul{
 
   margin: 0;
   padding-left: 0;
 }
 
-.settings li{
+.settings-ul li{
 
+  width: 100%;
+  float: right;
+  clear: right;
+  padding:10px 10px;
   font-size: 16px;
-  text-align: right;
-  border-bottom: 1px solid black;
+  text-align: left;
+  font-weight: bold;
+  border-bottom: 1px solid #ccc;
   list-style-type: none;
+}
+.settings-ul li:hover{
+
+  cursor: pointer;
 }
 
 #timer{
 
   text-align: center;
-  margin-right: 5px;
 }
 
-
-#timer, #tally{
+#tally, #timer{
 
   font-size: 15px;
-}
-
-#tally{
   margin-top: 10px;
   padding-left: 0;
 }

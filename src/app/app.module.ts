@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { ExpressionComponent } from './expression/expression.component';
+import { SettingsComponent } from './settings/settings.component';
 
 
 
@@ -12,6 +13,7 @@ import { ExpressionComponent } from './expression/expression.component';
   declarations: [
     AppComponent,
     ExpressionComponent,
+    SettingsComponent,
 
   ],
   imports: [

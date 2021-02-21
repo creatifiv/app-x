@@ -21,6 +21,9 @@ export class ExpressionComponent implements OnInit {
   f1 = 0;
   f2 = 0;
 
+  display = "none";
+  clicks = 0;
+
   showResults = false;
 
   interval: any;
@@ -85,6 +88,24 @@ export class ExpressionComponent implements OnInit {
 
     
 
+  }
+
+  showSettings(event:any){
+
+      this.display = "block";
+      this.clicks++;
+
+      if(this.clicks >= 2){
+
+        this.display = "none"
+        this.clicks = 0;
+      }
+
+  }
+
+  changeSettings(event:any, sec:number){
+
+      this.seconds = sec;
   }
        
 

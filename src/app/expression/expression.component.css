@@ -42,7 +42,7 @@ input[type=number] {
 .bi-gear{
 
   float: right;
-  font-size: 22px !important;
+  font-size: 24px !important;
 }
 
 #settings{
@@ -56,8 +56,9 @@ input[type=number] {
   width: 100px;
   position: absolute;
   right: 0;
-  top: 40px;
-  margin-right: 12px;
+  top: 36px;
+  right: 0;
+  /*margin-right: 16px;*/
   border: 1px solid #ccc;
   border-bottom: transparent;
   background-color: white;
@@ -169,5 +170,28 @@ input[type=number] {
 }
 
 
+#keypad{
+
+  width: 285px;
+  margin: 75px 0 0;
+}
+
+.k-btn{  
+
+  width: 75px;
+  height: 75px;
+  font-size: 26px;
+  margin: 0 10px 15px;
+  border: 1px solid #d584db;
+  background-color: transparent;
+
+}
+
+
+#btn-0{
+
+display: block;
+  margin: 0 auto;
+}
 
 

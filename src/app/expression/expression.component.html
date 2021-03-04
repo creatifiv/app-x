@@ -43,8 +43,9 @@
 
 
   <div class="row">
-    <div class="col">
 
+
+    <div class="col-sm-5 offset-sm-1">
       <p id="expression">  
         <span class="factor1">{{f1}}</span> 
         <span class="factor2">{{f2}}</span>
@@ -58,6 +59,32 @@
       </form> 
 
     </div>
+
+
+     <div class="col-sm-5">
+       
+       <div id= "keypad">
+
+        <button id="btn-1" class="k-btn" (click)= "keyPress($event)" value="1" >1</button>
+        <button id="btn-2" class="k-btn" (click)= "keyPress($event)" value="2" >2</button>
+        <button id="btn-3" class="k-btn" (click)= "keyPress($event)" value="3" >3</button><br/>
+        <button id="btn-4" class="k-btn" (click)= "keyPress($event)" value="4" >4</button>
+        <button id="btn-5" class="k-btn" (click)= "keyPress($event)" value="5" >5</button>
+        <button id="btn-6" class="k-btn" (click)= "keyPress($event)" value="6" >6</button><br/>
+        <button id="btn-7" class="k-btn" (click)= "keyPress($event)" value="7" >7</button>
+        <button id="btn-8" class="k-btn" (click)= "keyPress($event)" value="8" >8</button>
+        <button id="btn-9" class="k-btn" (click)= "keyPress($event)" value="9" >9</button><br/>
+        <button id="btn-0" class="k-btn" (click)= "keyPress($event)" value="0" >0</button><br/>
+
+         
+       </div>
+
+
+     </div>
+
+
+
+
   </div>
 
 

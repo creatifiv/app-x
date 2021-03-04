@@ -194,8 +194,49 @@ export class ExpressionComponent implements OnInit {
 }
 
 
+  k = 0;
+  keyLog:any = [];
+  log = 0;
+  keyPressed = 0;
 
 
+  keyPress(event:any){
+
+   this.keyLog.push(Number(event.target.value));
+   this.log = Number(this.keyLog.join(""));
+   console.log(this.log + " " + this.keyLog);
+
+   if(this.answer <= 9){
+
+     if(this.answer === this.keyLog[0]){
+
+       console.log("KeyPad Answer Correct!");
+     }
+   }
+   else if(this.answer <= 99){
+
+     if(this.answer == this.log){
+
+         console.log("Correct" + " "+ this.log);
+     }
+
+    }
+      else if(this.answer >= 100){
+
+        if(this.answer == this.log){
+
+            console.log("Correct");
+          }
+   }
+
+  }
+
+  chkArray(event:any){
+
+      this.log = 0;
+      this.keyLog = [];
+      console.log(this.log);
+  }
 
 
   submit(event:any){

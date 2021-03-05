@@ -22,7 +22,15 @@ export class ExpressionComponent implements OnInit {
   f2 = 0;
 
   display = "none";
+  displayKeypad = "none";
+  keyPadRequest = 0;
   clicks = 0;
+
+  plusSign = "+";
+  hideForm = "block";
+  moveExpression = "col";
+  showKeypadEntry = "none";
+  keypadEntry = 0;
 
   showResults = false;
 
@@ -101,6 +109,27 @@ export class ExpressionComponent implements OnInit {
         this.clicks = 0;
       }
 
+  }
+
+  showKeypad(event:any){
+
+
+    this.displayKeypad = "block";
+    this.moveExpression = "col-sm-5 offset-sm-1";
+    this.keyPadRequest++;
+    this.plusSign = "-";
+    this.hideForm = "none";
+    this.showKeypadEntry = "block";
+
+    if(this.keyPadRequest >= 2){
+
+      this.displayKeypad = "none";
+      this.moveExpression = "col";
+      this.keyPadRequest = 0;
+      this.plusSign = "+";
+      this.hideForm = "block";
+      this.showKeypadEntry  = "none";
+}
   }
 
   changeSettings(event:any, sec:number){
@@ -204,6 +233,7 @@ export class ExpressionComponent implements OnInit {
 
    this.keyLog.push(Number(event.target.value));
    this.log = Number(this.keyLog.join(""));
+   this.keypadEntry = this.log;
    console.log(this.log + " " + this.keyLog);
 
    if(this.answer <= 9){

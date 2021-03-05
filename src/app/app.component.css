@@ -1,12 +1,19 @@
 
+/*
+.spacer{
+
+	padding: 15px 0;
+	margin: 250px 0 0;
+}
+*/
+
+
 
 footer{
 
 	position: fixed;
 	bottom: 0;
-	z-index: 1;
 	width: 100%;
-	margin: 150px 0 0;
 	padding: 20px 0;
 	color: white;
 	text-align: center;
@@ -18,3 +25,4 @@ footer p{
 
 	margin-bottom: 0;
 }
+

@@ -22,8 +22,9 @@
 
       <div [style.display] = "display" class="settings-box">
         <ul class="settings-ul">
-          <li (click)="changeSettings($event, 60)"><i class="bi bi-plus"></i>1 m</li>
-          <li (click)="changeSettings($event, 180)"><i class="bi bi-plus"></i>3 m</li>
+          <li (click)="changeSettings($event, 60)"><i>+</i> 1 m</li>
+          <li (click)="changeSettings($event, 180)"><i>+</i> 3 m</li>
+          <li (click)="showKeypad($event)"><i>{{plusSign}}</i> Keypad</li>
         </ul>
       </div>
 
@@ -45,23 +46,25 @@
   <div class="row">
 
 
-    <div class="col-sm-5 offset-sm-1">
+    <div [class]="moveExpression"> <!--col-sm-5 offset-sm-1-->
       <p id="expression">  
         <span class="factor1">{{f1}}</span> 
         <span class="factor2">{{f2}}</span>
         <span id="operator">x</span>  
       </p>
       
-      <form action=" " id="form" (submit) ="submit($event)">
+      <form action=" " id="form" (submit) ="submit($event)" [style.display] = "hideForm">
 
         <input id="input" type="number" [value] = "value" [placeholder] = "placeHolder" autocomplete="off"  (input) = "getInput($event)" >
 
       </form> 
 
+      <p id="keypadEntry" [style.display] = "showKeypadEntry">{{keypadEntry}}</p>
+
     </div>
 
 
-     <div class="col-sm-5">
+     <div class="col-sm-5 " [style.display] = "displayKeypad" >
        
        <div id= "keypad">
 
@@ -74,7 +77,7 @@
         <button id="btn-7" class="k-btn" (click)= "keyPress($event)" value="7" >7</button>
         <button id="btn-8" class="k-btn" (click)= "keyPress($event)" value="8" >8</button>
         <button id="btn-9" class="k-btn" (click)= "keyPress($event)" value="9" >9</button><br/>
-        <button id="btn-0" class="k-btn" (click)= "keyPress($event)" value="0" >0</button><br/>
+        <button id="btn-0" class="k-btn btn-center" (click)= "keyPress($event)" value="0" >0</button><br/>
 
          
        </div>

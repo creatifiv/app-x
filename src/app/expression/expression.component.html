@@ -22,9 +22,9 @@
 
       <div [style.display] = "display" class="settings-box">
         <ul class="settings-ul">
-          <li (click)="changeSettings($event, 60)"><i>+</i> 1 m</li>
-          <li (click)="changeSettings($event, 180)"><i>+</i> 3 m</li>
-          <li (click)="showKeypad($event)"><i>{{plusSign}}</i> Keypad</li>
+          <li (click)="changeSettings($event, 60)"><i class="bi bi-plus"></i> 1 m</li>
+          <li (click)="changeSettings($event, 180)"><i class="bi bi-plus"></i> 3 m</li>
+          <li (click)="showKeypad($event)"><i [class]="bs_icon"></i> Keypad</li>
         </ul>
       </div>
 

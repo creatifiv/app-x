@@ -31,6 +31,7 @@ export class ExpressionComponent implements OnInit {
   moveExpression = "col";
   showKeypadEntry = "none";
   keypadEntry = 0;
+  bs_icon = "bi bi-plus";
 
   showResults = false;
 
@@ -117,7 +118,7 @@ export class ExpressionComponent implements OnInit {
     this.displayKeypad = "block";
     this.moveExpression = "col-sm-5 offset-sm-1";
     this.keyPadRequest++;
-    this.plusSign = "-";
+    this.bs_icon = "bi bi-dash";
     this.hideForm = "none";
     this.showKeypadEntry = "block";
 
@@ -126,7 +127,7 @@ export class ExpressionComponent implements OnInit {
       this.displayKeypad = "none";
       this.moveExpression = "col";
       this.keyPadRequest = 0;
-      this.plusSign = "+";
+      this.bs_icon = "bi bi-plus";
       this.hideForm = "block";
       this.showKeypadEntry  = "none";
 }

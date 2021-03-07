@@ -18,8 +18,10 @@ export class ExpressionComponent implements OnInit {
 
   x = 0; //Logs multiples correct
 
+
   f1 = 0;
   f2 = 0;
+
 
   display = "none";
   displayKeypad = "none";
@@ -30,8 +32,18 @@ export class ExpressionComponent implements OnInit {
   hideForm = "block";
   moveExpression = "col";
   showKeypadEntry = "none";
-  keypadEntry = 0;
+  keypadEntry:any = null;
   bs_icon = "bi bi-plus";
+
+
+  k = 0;
+  keylogConverted = 0;
+  keyPressCount = 0;
+  keyLog:any = [];
+  answerLog:any[] = [];
+
+
+  turnRed = false;
 
   showResults = false;
 
@@ -42,6 +54,7 @@ export class ExpressionComponent implements OnInit {
 
   getSec = 0; //Get seconds via date object
   answer = 0; //multiply answer
+  answerToString:any = null;
   input:number = 1; // unser input
 
  placeHolder:any = " "; // plcace holder attribute variable
@@ -137,18 +150,71 @@ export class ExpressionComponent implements OnInit {
 
       this.seconds = sec;
   }
+
+  random = true;
+  multiples = false;
+  factor = 8;
+
+
+changeFactors(event:any, random:boolean, multiples:boolean, factor:number){
+
+    this.random = random;
+    this.multiples = multiples;
+    this.factor = factor;
+    this.multiply();
+
+    console.log("Rundo");
+
+}
        
 
   multiply():void {
 
-    this.f1 = Math.floor(Math.random() * 12);
-    this.f2 = Math.floor(Math.random() * 12);
+    
+   if(this.random == true){
 
-    this.answer = this.f1 * this.f2;
+      this.f1 = Math.floor(Math.random() * 12);
+      this.f2 = Math.floor(Math.random() * 12);
 
-    console.log("Next Answer:" + " " + this.answer);
+      this.answer = this.f1 * this.f2;
+
+      console.log("Random-Answer" + " " + this.answer);
+
+      this.convertAnswer();
+    }
+
+    if(this.multiples == true){
+
+       this.f1 = Math.floor(Math.random() * 12);
+       this.f2 = this.factor;
+
+       this.answer = this.f1 * this.f2;
+
+      console.log("Multiples-Answer" + " " + this.answer);
+
+      this.convertAnswer();
+
+    }
+
 
   }
+
+  convertAnswer(){
+
+  this.clearLogs();
+
+  this.answerToString = this.answer.toString();
+
+  let i = 0;
+
+    for(i; this.answerLog.length < this.answerToString.length; i++){
+
+         this.answerLog.push(this.answerToString.charAt(i));
+
+         console.log('\n', "Answe Log Conversion Called" + " " + '\n', "Answer Log Check:" + " " + this.answerLog);
+    }
+
+ }
 
 
 
@@ -223,50 +289,208 @@ export class ExpressionComponent implements OnInit {
     console.log("Tallied:" + " " + this.f1 + "X" + this.f2);
 }
 
+  clearKeypadEntry(event:any){
 
-  k = 0;
-  keyLog:any = [];
-  log = 0;
-  keyPressed = 0;
+    this.keypadEntry = null;
+    this.keyLog = [];
+  }
+
+
+  clearLogs(){
+
+       this.keypadEntry = null;
+       this.keyLog = [];
+       this.keylogConverted = 0;
+       this.answerLog = [];
+       this.keyPressCount = 0;
+  }
 
 
   keyPress(event:any){
 
    this.keyLog.push(Number(event.target.value));
-   this.log = Number(this.keyLog.join(""));
-   this.keypadEntry = this.log;
-   console.log(this.log + " " + this.keyLog);
+   this.keylogConverted = Number(this.keyLog.join(""));
+   this.keypadEntry = this.keylogConverted;
+   this.keyPressCount++;
 
-   if(this.answer <= 9){
+   console.log("Key Press Data", '\n' + " " + "KeyLog Converted:" + " " + this.keylogConverted + " " +  " KeyLog: "  
 
-     if(this.answer === this.keyLog[0]){
+     +  " " + this.keyLog + " " + " Answer Log: "  + this.answerLog + " " + " KeyLog Length: " + " " + this.keyLog.length + " " + "Key Press Count:" + " " + this.keyPressCount);
 
-       console.log("KeyPad Answer Correct!");
-     }
-   }
-   else if(this.answer <= 99){
 
-     if(this.answer == this.log){
+    if(this.keyPressCount == 1 && this.answerLog.length == 1){
 
-         console.log("Correct" + " "+ this.log);
-     }
+      if(this.keyLog[0] == this.answerLog[0]){ 
+
+        console.log("Right"); 
+        this.multiply();
+
+      }
+      else if(this.keyLog[0] != this.answerLog[0]){
+
+                this.turnRed = true;
+        }
+    }
+
+
+    if(this.answerLog.length == 2){ 
+
+        if(this.keyPressCount == 1){
+
+           if(this.keyLog[0] == this.answerLog[0]){ 
+
+            console.log("Right"); 
+          }  
+        else if(this.keyLog[0] != this.answerLog[0]){
+
+              this.turnRed = true;
+              console.log(" 2 is Red");
+        }  
+      }
+
+      if(this.keyPressCount == 2){
+
+        if(this.keyLog[1] == this.answerLog[1]){
+
+            console.log("Right");
+            this.multiply();
+          }
+          else if(this.keyLog[1] != this.answerLog[1]){
+
+              this.turnRed = true;
+              console.log(" 2 is Red");
+          }
+        }
 
     }
-      else if(this.answer >= 100){
 
-        if(this.answer == this.log){
 
-            console.log("Correct");
-          }
+    if(this.answerLog.length == 3){ 
+
+
+        if(this.keyPressCount == 1){
+
+           if(this.keyLog[0] == this.answerLog[0]){ 
+
+            console.log("Right"); 
+          }  
+        else if(this.keyLog[0] != this.answerLog[0]){
+
+              this.turnRed = true;
+              console.log(" 3 is Red");
+        }  
+      }
+
+      if(this.keyPressCount == 2){
+
+           if(this.keyLog[1] == this.answerLog[1]){ 
+
+            console.log("Right"); 
+          }  
+        else if(this.keyLog[1] != this.answerLog[1]){
+
+              this.turnRed = true;
+              console.log(" 3 is Red");
+        }  
+      }
+
+      if(this.keyPressCount == 3){
+
+           if(this.keyLog[2] == this.answerLog[2]){ 
+
+            console.log("Right"); 
+            this.multiply();
+          }  
+        else if(this.keyLog[2] != this.answerLog[2]){
+
+              this.turnRed = true;
+              console.log(" 3 is Red");
+
+
+        }  
+      }
+
+
+
+
+
+
+    }
+
+
+
+    
+
+/*
+    if(this.answerLog.length == 1 && this.keyLog[0] == this.answerLog[1]){
+
+          console.log("Correct!")
+      }
+
+
+*/
+
+
+/*
+   if(this.answerLog.length == 1){
+
+     if(this.keyLog[0] == this.answerLog[0]){
+
+       console.log("KeyPad Answer Correct!");
+       this.multiply();
+
+     }
+
+     else if(this.keyLog[0] != this.answerLog[0]){
+
+           this.turnRed = true;
+           console.log("Not Equal to 1" + " " + " KeyLog: " + this.keyLog.length + " " + "AnswerLog Length:" + this.answerLog.length);
+     }
+
+   } else if(this.keyPressCount == 2){ 
+
+       if(this.answerLog.length == 2){
+
+         if(this.keyLog[0] == this.answerLog[0]){
+
+       if(this.keyLog[1] == this.answerLog[1]){
+
+         console.log("Correct" + " "+ this.keylogConverted);
+         this.multiply();
+       }
+     }
    }
+        else if(this.keyLog[0] != this.answerLog[0] && this.keyLog[1] != this.keyLog[1]){
 
+           this.turnRed = true;
+           console.log("Less than 99" + " " + " Answer Log:" + this.answerLog[0]);
+       }
+
+    }
+      else if(this.keyPressCount == 3){
+
+        if(this.answerLog.length == 3){
+
+          if(this.answer == this.keylogConverted){
+
+              this.multiply();
+              console.log("Correct");
+            }
+        }
+           else if(this.keyLog[0][1][2] != this.answer){
+
+           this.turnRed = true;
+         }
+     }
+
+     */
   }
 
   chkArray(event:any){
 
-      this.log = 0;
+      this.keylogConverted = 0;
       this.keyLog = [];
-      console.log(this.log);
+      console.log(this.keylogConverted);
   }
 
 

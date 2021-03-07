@@ -25,6 +25,20 @@
           <li (click)="changeSettings($event, 60)"><i class="bi bi-plus"></i> 1 m</li>
           <li (click)="changeSettings($event, 180)"><i class="bi bi-plus"></i> 3 m</li>
           <li (click)="showKeypad($event)"><i [class]="bs_icon"></i> Keypad</li>
+          <li (click)="changeFactors($event, true, false, 0)">Random</li>
+          <li (click)="changeFactors($event, false, true, 12)">Mutiples of 12</li>
+          <li (click)="changeFactors($event, false, true, 11)">Mutiples of 11</li>
+          <li (click)="changeFactors($event, false, true, 10)">Mutiples of 10</li>
+          <li (click)="changeFactors($event, false, true, 9)">Mutiples of 9</li>
+          <li (click)="changeFactors($event, false, true, 8)">Mutiples of 8</li>
+          <li (click)="changeFactors($event, false, true, 7)">Mutiples of 7</li>
+          <li (click)="changeFactors($event, false, true, 6)">Mutiples of 6</li>
+          <li (click)="changeFactors($event, false, true, 5)">Mutiples of 5</li>
+          <li (click)="changeFactors($event, false, true, 4)">Mutiples of 4</li>
+          <li (click)="changeFactors($event, false, true, 3)">Mutiples of 3</li>
+          <li (click)="changeFactors($event, false, true, 2)">Mutiples of 2</li>
+          <li (click)="changeFactors($event, false, true, 1)">Mutiples of 1</li>
+          <li (click)="changeFactors($event, false, true, 0)">Mutiples of 0</li>
         </ul>
       </div>
 
@@ -59,7 +73,7 @@
 
       </form> 
 
-      <p id="keypadEntry" [style.display] = "showKeypadEntry">{{keypadEntry}}</p>
+      <p id="keypadEntry" [style.display] = "showKeypadEntry" [class.red]="turnRed">{{keypadEntry}}</p>
 
     </div>
 
@@ -77,7 +91,9 @@
         <button id="btn-7" class="k-btn" (click)= "keyPress($event)" value="7" >7</button>
         <button id="btn-8" class="k-btn" (click)= "keyPress($event)" value="8" >8</button>
         <button id="btn-9" class="k-btn" (click)= "keyPress($event)" value="9" >9</button><br/>
-        <button id="btn-0" class="k-btn btn-center" (click)= "keyPress($event)" value="0" >0</button><br/>
+        <button class="k-btn">:)</button>
+        <button id="btn-0" class="k-btn " (click)= "keyPress($event)" value="0" >0</button>
+        <button class="k-btn" (click)="clearKeypadEntry($event)">C</button>
 
          
        </div>

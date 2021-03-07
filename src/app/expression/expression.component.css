@@ -53,7 +53,8 @@ input[type=number] {
 
 .settings-box{
 
-  width: 100px;
+  width: 150px;
+  height: 200px;
   position: absolute;
   right: 0;
   top: 36px;
@@ -62,7 +63,9 @@ input[type=number] {
   border: 1px solid #ccc;
   border-bottom: transparent;
   background-color: white;
+  overflow: scroll;
 }
+
 
 .settings-ul{
 
@@ -200,3 +203,7 @@ display: block;
   margin: 0 auto;
 }
 
+.red{
+
+  color: red;
+}

@@ -195,6 +195,12 @@ input[type=number] {
   background-color: transparent;
 
 }
+.k-btn:disabled{
+
+  color: black;
+  border: 1px solid #d584db;
+  background-color: transparent;
+}
 
 
 .btn-center{

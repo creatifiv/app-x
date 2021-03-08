@@ -27,6 +27,7 @@ export class ExpressionComponent implements OnInit {
   displayKeypad = "none";
   keyPadRequest = 0;
   clicks = 0;
+  btnDisabled = false;
 
   plusSign = "+";
   hideForm = "block";
@@ -91,7 +92,7 @@ export class ExpressionComponent implements OnInit {
   }
 
 
-  createTimer(){ this.interval = setInterval(() => { this.getSec = new Date().getSeconds(); if(this.getSec){this.seconds--;} if(this.seconds <= 0){this.timesUp(); } if(this.redTimer > 0){this.redTimer++; console.log("RedTImer" + " " + this.redTimer); if(this.redTimer == 3){this.clearRedTimer();} /*inside end of red timer*/} if(this.blackTimer > 0){this.blackTimer++; console.log("Black TImer" + " " + this.blackTimer); if(this.blackTimer == 3){this.clearBlackTimer();}/*End of black timer*/}    }, 1000); }
+  createTimer(){ this.interval = setInterval(() => { this.getSec = new Date().getSeconds(); if(this.getSec){this.seconds--;} if(this.seconds <= 0){this.timesUp(); } if(this.redTimer > 0){this.redTimer++;  console.log("RedTImer" + " " + this.redTimer); if(this.redTimer == 3){this.turnRed = false; this.keypadEntry = this.answer;} if(this.redTimer == 6){this.clearRedTimer();} /*inside end of red timer*/} if(this.blackTimer > 0){this.blackTimer++; console.log("Black TImer" + " " + this.blackTimer); if(this.blackTimer == 3){this.clearBlackTimer();}/*End of black timer*/}    }, 1000); }
 
 
 
@@ -102,6 +103,7 @@ export class ExpressionComponent implements OnInit {
 
     //[showAnswer is the input form value]
     this.showAnswer = this.answer;
+    this.keypadEntry = this.answer;
     this.value = null;
     this.placeHolder = this.showAnswer;
 
@@ -307,6 +309,7 @@ changeFactors(event:any, random:boolean, multiples:boolean, factor:number){
   clearRedTimer(){
 
     this.redTimer = 0;
+    this.btnDisabled = false;
     this.multiply();
   }
 
@@ -314,6 +317,11 @@ changeFactors(event:any, random:boolean, multiples:boolean, factor:number){
 
     this.blackTimer = 0;
     this.multiply();
+  }
+
+  showAnswer2(){
+
+    this.keypadEntry = this.answer;
   }
 
 
@@ -333,13 +341,16 @@ changeFactors(event:any, random:boolean, multiples:boolean, factor:number){
 
       if(this.keyLog[0] == this.answerLog[0]){ 
 
-        console.log("Right"); 
+        console.log("Right");
+        this.correct++; 
         this.blackTimer = 1;
 
       }
       else if(this.keyLog[0] != this.answerLog[0]){
 
                 this.turnRed = true;
+                this.btnDisabled = true;
+                this.incorrect++;
                 this.redTimer = 1;
         }
     }
@@ -356,6 +367,8 @@ changeFactors(event:any, random:boolean, multiples:boolean, factor:number){
         else if(this.keyLog[0] != this.answerLog[0]){
 
               this.turnRed = true;
+              this.btnDisabled = true;
+              this.incorrect++;
               this.redTimer = 1;
               console.log(" 2 is Red");
         }  
@@ -366,11 +379,14 @@ changeFactors(event:any, random:boolean, multiples:boolean, factor:number){
         if(this.keyLog[1] == this.answerLog[1]){
 
             console.log("Right");
+            this.correct++;
             this.blackTimer = 1;
           }
           else if(this.keyLog[1] != this.answerLog[1]){
 
               this.turnRed = true;
+              this.btnDisabled = true;
+              this.incorrect++;
               this.redTimer = 1;
               console.log(" 2 is Red");
           }
@@ -390,7 +406,10 @@ changeFactors(event:any, random:boolean, multiples:boolean, factor:number){
         else if(this.keyLog[0] != this.answerLog[0]){
 
               this.turnRed = true;
+              this.btnDisabled = true;
+              this.incorrect++;
               this.redTimer = 1;
+
               console.log(" 3 is Red");
         }  
       }
@@ -404,6 +423,8 @@ changeFactors(event:any, random:boolean, multiples:boolean, factor:number){
         else if(this.keyLog[1] != this.answerLog[1]){
 
               this.turnRed = true;
+              this.btnDisabled = true;
+              this.incorrect++;
               this.redTimer = 1;
               console.log(" 3 is Red");
         }  
@@ -414,11 +435,14 @@ changeFactors(event:any, random:boolean, multiples:boolean, factor:number){
            if(this.keyLog[2] == this.answerLog[2]){ 
 
             console.log("Right"); 
+            this.incorrect++;
             this.blackTimer = 1;
           }  
         else if(this.keyLog[2] != this.answerLog[2]){
 
               this.turnRed = true;
+              this.btnDisabled = true;
+              this.incorrect++;
               this.redTimer = 1;
               console.log(" 3 is Red");
 

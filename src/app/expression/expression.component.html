@@ -82,16 +82,16 @@
        
        <div id= "keypad">
 
-        <button id="btn-1" class="k-btn" (click)= "keyPress($event)" value="1" >1</button>
-        <button id="btn-2" class="k-btn" (click)= "keyPress($event)" value="2" >2</button>
-        <button id="btn-3" class="k-btn" (click)= "keyPress($event)" value="3" >3</button><br/>
-        <button id="btn-4" class="k-btn" (click)= "keyPress($event)" value="4" >4</button>
-        <button id="btn-5" class="k-btn" (click)= "keyPress($event)" value="5" >5</button>
-        <button id="btn-6" class="k-btn" (click)= "keyPress($event)" value="6" >6</button><br/>
-        <button id="btn-7" class="k-btn" (click)= "keyPress($event)" value="7" >7</button>
-        <button id="btn-8" class="k-btn" (click)= "keyPress($event)" value="8" >8</button>
-        <button id="btn-9" class="k-btn" (click)= "keyPress($event)" value="9" >9</button><br/>
-        <button id="btn-0" class="k-btn btn-center" (click)= "keyPress($event)" value="0" >0</button>
+        <button id="btn-1" class="k-btn" (click)= "keyPress($event)" value="1" [disabled] = "btnDisabled">1</button>
+        <button id="btn-2" class="k-btn" (click)= "keyPress($event)" value="2" [disabled] = "btnDisabled">2</button>
+        <button id="btn-3" class="k-btn" (click)= "keyPress($event)" value="3" [disabled] = "btnDisabled">3</button><br/>
+        <button id="btn-4" class="k-btn" (click)= "keyPress($event)" value="4" [disabled] = "btnDisabled">4</button>
+        <button id="btn-5" class="k-btn" (click)= "keyPress($event)" value="5" [disabled] = "btnDisabled">5</button>
+        <button id="btn-6" class="k-btn" (click)= "keyPress($event)" value="6" [disabled] = "btnDisabled">6</button><br/>
+        <button id="btn-7" class="k-btn" (click)= "keyPress($event)" value="7" [disabled] = "btnDisabled">7</button>
+        <button id="btn-8" class="k-btn" (click)= "keyPress($event)" value="8" [disabled] = "btnDisabled">8</button>
+        <button id="btn-9" class="k-btn" (click)= "keyPress($event)" value="9" [disabled] = "btnDisabled">9</button><br/>
+        <button id="btn-0" class="k-btn btn-center" (click)= "keyPress($event)" value="0" [disabled] = "btnDisabled">0</button>
 
          
        </div>

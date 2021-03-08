@@ -44,6 +44,10 @@ export class ExpressionComponent implements OnInit {
 
 
   turnRed = false;
+  redTimer = 0; // if answer is wrong
+  blackTimer = 0; //if answer i sright
+
+
 
   showResults = false;
 
@@ -87,7 +91,7 @@ export class ExpressionComponent implements OnInit {
   }
 
 
-  createTimer(){ this.interval = setInterval(() => { this.getSec = new Date().getSeconds(); if(this.getSec){this.seconds--;} if(this.seconds <= 0){this.timesUp(); }}, 1000); }
+  createTimer(){ this.interval = setInterval(() => { this.getSec = new Date().getSeconds(); if(this.getSec){this.seconds--;} if(this.seconds <= 0){this.timesUp(); } if(this.redTimer > 0){this.redTimer++; console.log("RedTImer" + " " + this.redTimer); if(this.redTimer == 3){this.clearRedTimer();} /*inside end of red timer*/} if(this.blackTimer > 0){this.blackTimer++; console.log("Black TImer" + " " + this.blackTimer); if(this.blackTimer == 3){this.clearBlackTimer();}/*End of black timer*/}    }, 1000); }
 
 
 
@@ -289,12 +293,6 @@ changeFactors(event:any, random:boolean, multiples:boolean, factor:number){
     console.log("Tallied:" + " " + this.f1 + "X" + this.f2);
 }
 
-  clearKeypadEntry(event:any){
-
-    this.keypadEntry = null;
-    this.keyLog = [];
-  }
-
 
   clearLogs(){
 
@@ -303,6 +301,19 @@ changeFactors(event:any, random:boolean, multiples:boolean, factor:number){
        this.keylogConverted = 0;
        this.answerLog = [];
        this.keyPressCount = 0;
+       this.turnRed = false;
+  }
+
+  clearRedTimer(){
+
+    this.redTimer = 0;
+    this.multiply();
+  }
+
+  clearBlackTimer(){
+
+    this.blackTimer = 0;
+    this.multiply();
   }
 
 
@@ -323,12 +334,13 @@ changeFactors(event:any, random:boolean, multiples:boolean, factor:number){
       if(this.keyLog[0] == this.answerLog[0]){ 
 
         console.log("Right"); 
-        this.multiply();
+        this.blackTimer = 1;
 
       }
       else if(this.keyLog[0] != this.answerLog[0]){
 
                 this.turnRed = true;
+                this.redTimer = 1;
         }
     }
 
@@ -344,6 +356,7 @@ changeFactors(event:any, random:boolean, multiples:boolean, factor:number){
         else if(this.keyLog[0] != this.answerLog[0]){
 
               this.turnRed = true;
+              this.redTimer = 1;
               console.log(" 2 is Red");
         }  
       }
@@ -353,11 +366,12 @@ changeFactors(event:any, random:boolean, multiples:boolean, factor:number){
         if(this.keyLog[1] == this.answerLog[1]){
 
             console.log("Right");
-            this.multiply();
+            this.blackTimer = 1;
           }
           else if(this.keyLog[1] != this.answerLog[1]){
 
               this.turnRed = true;
+              this.redTimer = 1;
               console.log(" 2 is Red");
           }
         }
@@ -366,7 +380,6 @@ changeFactors(event:any, random:boolean, multiples:boolean, factor:number){
 
 
     if(this.answerLog.length == 3){ 
-
 
         if(this.keyPressCount == 1){
 
@@ -377,6 +390,7 @@ changeFactors(event:any, random:boolean, multiples:boolean, factor:number){
         else if(this.keyLog[0] != this.answerLog[0]){
 
               this.turnRed = true;
+              this.redTimer = 1;
               console.log(" 3 is Red");
         }  
       }
@@ -390,6 +404,7 @@ changeFactors(event:any, random:boolean, multiples:boolean, factor:number){
         else if(this.keyLog[1] != this.answerLog[1]){
 
               this.turnRed = true;
+              this.redTimer = 1;
               console.log(" 3 is Red");
         }  
       }
@@ -399,92 +414,21 @@ changeFactors(event:any, random:boolean, multiples:boolean, factor:number){
            if(this.keyLog[2] == this.answerLog[2]){ 
 
             console.log("Right"); 
-            this.multiply();
+            this.blackTimer = 1;
           }  
         else if(this.keyLog[2] != this.answerLog[2]){
 
               this.turnRed = true;
+              this.redTimer = 1;
               console.log(" 3 is Red");
-
 
         }  
       }
 
-
-
-
-
-
     }
 
-
-
-    
-
-/*
-    if(this.answerLog.length == 1 && this.keyLog[0] == this.answerLog[1]){
-
-          console.log("Correct!")
-      }
-
-
-*/
-
-
-/*
-   if(this.answerLog.length == 1){
-
-     if(this.keyLog[0] == this.answerLog[0]){
-
-       console.log("KeyPad Answer Correct!");
-       this.multiply();
-
-     }
-
-     else if(this.keyLog[0] != this.answerLog[0]){
-
-           this.turnRed = true;
-           console.log("Not Equal to 1" + " " + " KeyLog: " + this.keyLog.length + " " + "AnswerLog Length:" + this.answerLog.length);
-     }
-
-   } else if(this.keyPressCount == 2){ 
-
-       if(this.answerLog.length == 2){
-
-         if(this.keyLog[0] == this.answerLog[0]){
-
-       if(this.keyLog[1] == this.answerLog[1]){
-
-         console.log("Correct" + " "+ this.keylogConverted);
-         this.multiply();
-       }
-     }
-   }
-        else if(this.keyLog[0] != this.answerLog[0] && this.keyLog[1] != this.keyLog[1]){
-
-           this.turnRed = true;
-           console.log("Less than 99" + " " + " Answer Log:" + this.answerLog[0]);
-       }
-
-    }
-      else if(this.keyPressCount == 3){
-
-        if(this.answerLog.length == 3){
-
-          if(this.answer == this.keylogConverted){
-
-              this.multiply();
-              console.log("Correct");
-            }
-        }
-           else if(this.keyLog[0][1][2] != this.answer){
-
-           this.turnRed = true;
-         }
-     }
-
-     */
   }
+
 
   chkArray(event:any){
 

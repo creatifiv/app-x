@@ -1,2 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
 
+
+li{
+
+	list-style-type: none;
+}
+
+.spacer{
+
+	padding: 15px 0;
+	margin: 200px 0 0;
+}

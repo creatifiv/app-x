@@ -54,7 +54,7 @@ export class ExpressionComponent implements OnInit {
 
   interval: any;
 
-  seconds = 60; //Set timer
+  seconds = 0; //Set timer
   timerComplete = false;
 
   getSec = 0; //Get seconds via date object
@@ -129,6 +129,12 @@ export class ExpressionComponent implements OnInit {
         this.clicks = 0;
       }
 
+  }
+
+  save(event:any){
+
+
+      this.seconds = 60;
   }
 
   showKeypad(event:any){

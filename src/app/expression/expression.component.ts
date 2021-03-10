@@ -23,7 +23,7 @@ export class ExpressionComponent implements OnInit {
   f2 = 0;
 
 
-  display = "none";
+  displaySettings = "block";
   displayKeypad = "none";
   keyPadRequest = 0;
   clicks = 0;
@@ -35,6 +35,17 @@ export class ExpressionComponent implements OnInit {
   showKeypadEntry = "none";
   keypadEntry:any = null;
   bs_icon = "bi bi-plus";
+
+
+
+  random = true;
+  multiples = false;
+  factor = 8;
+
+  selectedSeconds = 0;
+  selectedFactors = 0;
+  selectedMultiiples = false;
+  selectedRandom = true;
 
 
   k = 0;
@@ -75,7 +86,7 @@ export class ExpressionComponent implements OnInit {
   attempt = 0; // logs up to two attempts at answer
 
 
-  init(){ this.multiply(); this.createTimer(); }
+  init(){ this.multiply(); }
 
 /*
   setTimer(event:any, time:number){
@@ -120,21 +131,12 @@ export class ExpressionComponent implements OnInit {
 
   showSettings(event:any){
 
-      this.display = "block";
-      this.clicks++;
-
-      if(this.clicks >= 2){
-
-        this.display = "none"
-        this.clicks = 0;
-      }
-
+      this.displaySettings = "block";
   }
 
-  save(event:any){
+  closeSettings(event:any){
 
-
-      this.seconds = 60;
+    this.displaySettings = "none";
   }
 
   showKeypad(event:any){
@@ -160,24 +162,33 @@ export class ExpressionComponent implements OnInit {
 
   changeSettings(event:any, sec:number){
 
-      this.seconds = sec;
+      this.selectedSeconds = sec;
   }
-
-  random = true;
-  multiples = false;
-  factor = 8;
 
 
 changeFactors(event:any, random:boolean, multiples:boolean, factor:number){
 
-    this.random = random;
-    this.multiples = multiples;
-    this.factor = factor;
-    this.multiply();
+    this.selectedRandom = random;
+    this.selectedMultiiples = multiples;
+    this.selectedFactors = factor;
 
     console.log("Rundo");
-
 }
+
+  save(event:any){
+
+     this.seconds = this.selectedSeconds;
+     this.random = this.selectedRandom;
+     this.multiples = this.selectedMultiiples;
+     this.factor = this.selectedFactors
+
+     this.showSettings(null);
+
+     this.createTimer();
+
+     console.log("Saved");
+  }
+
        
 
   multiply():void {

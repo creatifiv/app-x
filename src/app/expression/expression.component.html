@@ -5,9 +5,11 @@
   <div class="row">
 
     <div class="col-sm-3">
+
       <ul id="tally" class="clearfix">
       <li><span class="green">Correct:</span> {{correct}} </li>
        <li><span class="red"> Incorrect:</span> {{incorrect}} </li>
+
      </ul>
     </div>
 
@@ -19,55 +21,112 @@
     <div id="settings" class="col-sm-3 offset-sm-2">
       <i class="bi bi-gear" (click)="showSettings($event)"></i>
       <i class="bi bi-keyboard" (click)="showKeypad($event)"></i>
+    </div>
 
-      <div [style.display] = "display" class="settings-box">
-
-        <h4 class="settings-title settings-border">Settings</h4>
-
-        <h5 class="settings-title">Time</h5>
-        <ul class="settings-ul  settings-border clearfix">
-
-          <li>
-            <input type="checkbox" name="sec" class="chk-boxes" (click)="changeSettings($event, 60)">
-            <label for="sec"> 60 sec </label>
-          </li>
-         
-          <li>
-            <input type="checkbox" name="sec"  class="chk-boxes"(click)="changeSettings($event, 180)">
-            <label for="sec"> 120 sec </label>
-          </li>
-
-        </ul>
+      <div [style.display]="displaySettings" class="settings-box col">
 
 
-        <h5 class="settings-title">Multiples</h5>
-
-        <ul class="settings-ul clearfix settings-border">
-          <li (click)="changeFactors($event, false, true, 0)">Mutiples of 0</li>
-          <li (click)="changeFactors($event, false, true, 1)">Mutiples of 1</li>
-          <li (click)="changeFactors($event, false, true, 2)">Mutiples of 2</li>
-          <li (click)="changeFactors($event, false, true, 3)">Mutiples of 3</li>
-          <li (click)="changeFactors($event, false, true, 4)">Mutiples of 4</li>
-          <li (click)="changeFactors($event, false, true, 5)">Mutiples of 5</li>
-          <li (click)="changeFactors($event, false, true, 6)">Mutiples of 6</li>
-          <li (click)="changeFactors($event, false, true, 7)">Mutiples of 7</li>
-          <li (click)="changeFactors($event, false, true, 8)">Mutiples of 8</li>
-          <li (click)="changeFactors($event, false, true, 9)">Mutiples of 9</li>
-          <li (click)="changeFactors($event, false, true, 10)">Mutiples of 10</li>
-          <li (click)="changeFactors($event, false, true, 11)">Mutiples of 11</li>
-          <li (click)="changeFactors($event, false, true, 12)">Mutiples of 12</li>
-          <li (click)="changeFactors($event, true, false, 0)">Random</li>
-
-        </ul>
-
-        <div class="save-container clearfix">
-          <button class="save">SAVE</button>
+        <div class="inside-box clearfix">
+          <h4>Settings</h4>
+          <i id="close" class="bi bi-x" (click)="closeSettings($event)"></i>
         </div>
 
-      </div>
 
-    </div>
-  </div>
+        <div class="inside-box">
+
+          <h5 class="settings-title">Time</h5>
+            
+            <ul class="settings-ul clearfix">
+
+            <li>
+              <input type="checkbox" name="sec" class="chk-boxes" (click)="changeSettings($event, 60)">
+              <label for="sec"> 60 sec </label>
+            </li>
+
+            <li>
+              <input type="checkbox" name="sec"  class="chk-boxes"(click)="changeSettings($event, 180)">
+              <label for="sec"> 120 sec </label>
+            </li>
+          </ul>
+
+        </div>
+
+
+        <div class="inside-box">
+
+
+          <h5 class="settings-title">Multiples</h5>
+
+          <ul class="settings-ul clearfix">
+
+            <li>
+              <input (click)="changeFactors($event, true, false, 0)" type="checkbox" name="m" class="chk-boxes">  
+              <label for="m"> Random</label>
+            </li>
+            <li> 
+              <input (click)="changeFactors($event, false, true, 0)" type="checkbox" name="m" class="chk-boxes"> 
+              <label for="m"> Mutiples of 0</label>
+            </li>
+            <li> 
+              <input (click)="changeFactors($event, false, true, 1)" type="checkbox" name="m" class="chk-boxes"> 
+              <label for="m"> Mutiples of 1</label>
+            </li>
+            <li> 
+              <input (click)="changeFactors($event, false, true, 2)" type="checkbox" name="m" class="chk-boxes"> 
+              <label for="m"> Mutiples of 2</label>
+            </li>
+            <li> 
+              <input (click)="changeFactors($event, false, true, 3)" type="checkbox" name="m" class="chk-boxes"> 
+              <label for="m"> Mutiples of 3</label>
+            </li>
+            <li> 
+              <input (click)="changeFactors($event, false, true, 4)" type="checkbox" name="m" class="chk-boxes"> 
+              <label for="m"> Mutiples of 4</label>
+            </li>
+            <li> 
+              <input (click)="changeFactors($event, false, true, 5)" type="checkbox" name="m" class="chk-boxes"> 
+              <label for="m"> Mutiples of 5</label>
+            </li>
+            <li> 
+              <input (click)="changeFactors($event, false, true, 6)" type="checkbox" name="m" class="chk-boxes"> 
+              <label for="m"> Mutiples of 6</label>
+            </li>
+            <li> 
+              <input (click)="changeFactors($event, false, true, 7)" type="checkbox" name="m" class="chk-boxes"> 
+              <label for="m"> Mutiples of 7</label>
+            </li>
+            <li> 
+              <input (click)="changeFactors($event, false, true, 8)" type="checkbox" name="m" class="chk-boxes"> 
+              <label for="m"> Mutiples of 8</label>
+            </li>
+            <li> 
+              <input (click)="changeFactors($event, false, true, 9)" type="checkbox" name="m" class="chk-boxes"> 
+              <label for="m"> Mutiples of 9</label>
+            </li>
+            <li> 
+              <input (click)="changeFactors($event, false, true, 10)" type="checkbox" name="m" class="chk-boxes"> 
+              <label for="m"> Mutiples of 10</label>
+            </li>
+            <li> 
+              <input (click)="changeFactors($event, false, true, 11)" type="checkbox" name="m" class="chk-boxes"> 
+              <label for="m"> Mutiples of 11</label>
+            </li>
+            <li> 
+              <input (click)="changeFactors($event, false, true, 12)" type="checkbox" name="m" class="chk-boxes"> 
+              <label for="m"> Mutiples of 12</label>
+            </li>
+
+          </ul>
+
+        </div>
+
+        <div class="inside-box clearfix">
+          <button class="save" (click)="save($event)">SAVE</button>
+        </div>
+
+      </div> <!--end Settings Box -->
+
+    </div><!-- end row -->
 
 
 

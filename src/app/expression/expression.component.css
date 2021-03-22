@@ -1,6 +1,5 @@
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 
-
 p {
     margin: 0;
     padding: 0;
@@ -234,12 +233,17 @@ display: block;
   color: red;
 }
 
+.green{
+
+  color: green;
+}
+
 .chk-boxes{
 
   margin-right: 4px;
 }
 
-.save{
+.start{
 
   background-color: #d584db;
   color: white;

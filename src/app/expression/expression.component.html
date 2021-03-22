@@ -19,8 +19,8 @@
 
 
     <div id="settings" class="col-sm-3 offset-sm-2">
-      <i class="bi bi-gear" (click)="showSettings($event)"></i>
-      <i class="bi bi-keyboard" (click)="showKeypad($event)"></i>
+      <i class="bi bi-gear" title="Settings" (click)="showSettings($event)"></i>
+      <i class="bi bi-keyboard" title="Keyboard" (click)="showKeypad($event)"></i>
     </div>
 
       <div [style.display]="displaySettings" class="settings-box col">
@@ -121,7 +121,7 @@
         </div>
 
         <div class="inside-box clearfix">
-          <button class="save" (click)="save($event)">SAVE</button>
+          <button class="start" (click)="start($event)">START</button>
         </div>
 
       </div> <!--end Settings Box -->
@@ -152,11 +152,11 @@
       
       <form action=" " id="form" (submit) ="submit($event)" [style.display] = "hideForm">
 
-        <input id="input" type="number" [value] = "value" [placeholder] = "placeHolder" autocomplete="off"  (input) = "getInput($event)" >
+        <input id="input" type="number" [class]="turnRed" [value] = "value" [placeholder] = "placeHolder" autocomplete="off"  (keypress)="getKeyPress($event)" (input) = "getInput($event)" >
 
       </form> 
 
-      <p id="keypadEntry" [style.display] = "showKeypadEntry" [class.red]="turnRed">{{keypadEntry}}</p>
+      <p id="keypadEntry" [style.display] = "showKeypadEntry" [class]="turnRed">{{keypadEntry}}</p>
 
     </div>
 
@@ -165,16 +165,16 @@
        
        <div id= "keypad">
 
-        <button id="btn-1" class="k-btn" (click)= "keyPress($event)" value="1" [disabled] = "btnDisabled">1</button>
-        <button id="btn-2" class="k-btn" (click)= "keyPress($event)" value="2" [disabled] = "btnDisabled">2</button>
-        <button id="btn-3" class="k-btn" (click)= "keyPress($event)" value="3" [disabled] = "btnDisabled">3</button><br/>
-        <button id="btn-4" class="k-btn" (click)= "keyPress($event)" value="4" [disabled] = "btnDisabled">4</button>
-        <button id="btn-5" class="k-btn" (click)= "keyPress($event)" value="5" [disabled] = "btnDisabled">5</button>
-        <button id="btn-6" class="k-btn" (click)= "keyPress($event)" value="6" [disabled] = "btnDisabled">6</button><br/>
-        <button id="btn-7" class="k-btn" (click)= "keyPress($event)" value="7" [disabled] = "btnDisabled">7</button>
-        <button id="btn-8" class="k-btn" (click)= "keyPress($event)" value="8" [disabled] = "btnDisabled">8</button>
-        <button id="btn-9" class="k-btn" (click)= "keyPress($event)" value="9" [disabled] = "btnDisabled">9</button><br/>
-        <button id="btn-0" class="k-btn btn-center" (click)= "keyPress($event)" value="0" [disabled] = "btnDisabled">0</button>
+        <button id="btn-1" class="k-btn" (click)= "keyPadPress($event)" value="1" [disabled] = "btnDisabled">1</button>
+        <button id="btn-2" class="k-btn" (click)= "keyPadPress($event)" value="2" [disabled] = "btnDisabled">2</button>
+        <button id="btn-3" class="k-btn" (click)= "keyPadPress($event)" value="3" [disabled] = "btnDisabled">3</button><br/>
+        <button id="btn-4" class="k-btn" (click)= "keyPadPress($event)" value="4" [disabled] = "btnDisabled">4</button>
+        <button id="btn-5" class="k-btn" (click)= "keyPadPress($event)" value="5" [disabled] = "btnDisabled">5</button>
+        <button id="btn-6" class="k-btn" (click)= "keyPadPress($event)" value="6" [disabled] = "btnDisabled">6</button><br/>
+        <button id="btn-7" class="k-btn" (click)= "keyPadPress($event)" value="7" [disabled] = "btnDisabled">7</button>
+        <button id="btn-8" class="k-btn" (click)= "keyPadPress($event)" value="8" [disabled] = "btnDisabled">8</button>
+        <button id="btn-9" class="k-btn" (click)= "keyPadPress($event)" value="9" [disabled] = "btnDisabled">9</button><br/>
+        <button id="btn-0" class="k-btn btn-center" (click)= "keyPadPress($event)" value="0" [disabled] = "btnDisabled">0</button>
 
          
        </div>

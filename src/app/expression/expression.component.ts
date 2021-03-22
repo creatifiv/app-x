@@ -17,13 +17,14 @@ export class ExpressionComponent implements OnInit {
 
 
   x = 0; //Logs multiples correct
+  ii = 0
 
 
   f1 = 0;
   f2 = 0;
 
 
-  displaySettings = "block";
+  displaySettings = "none";
   displayKeypad = "none";
   keyPadRequest = 0;
   clicks = 0;
@@ -36,7 +37,9 @@ export class ExpressionComponent implements OnInit {
   keypadEntry:any = null;
   bs_icon = "bi bi-plus";
 
+  countDown = 3;
 
+  keyPressed = 0;
 
   random = true;
   multiples = false;
@@ -50,14 +53,19 @@ export class ExpressionComponent implements OnInit {
 
   k = 0;
   keylogConverted = 0;
-  keyPressCount = 0;
+  keysPressCount = 0;
+  keyPadCount = 0;
   keyLog:any = [];
   answerLog:any[] = [];
 
 
-  turnRed = false;
+  turnRed:any = null;
   redTimer = 0; // if answer is wrong
   blackTimer = 0; //if answer i sright
+
+  eKey:any = null;
+  keyPressAnsLog:any = [];
+  answerLogTwo:any = [];
 
 
 
@@ -67,15 +75,16 @@ export class ExpressionComponent implements OnInit {
 
   seconds = 0; //Set timer
   timerComplete = false;
+  timeToAnswer = 7;
 
   getSec = 0; //Get seconds via date object
   answer = 0; //multiply answer
   answerToString:any = null;
   input:number = 1; // unser input
 
- placeHolder:any = " "; // plcace holder attribute variable
- showAnswer:any = null; // stores answer from revealed from comleted timer 
- value:any = " "; //shows after 2 faied attempts 
+  placeHolder:any = " "; // plcace holder attribute variable
+  showAnswer:any = null; // stores answer from revealed from comleted timer 
+  value:any = " "; //shows after 2 faied attempts 
   
 
   correct = 0; // correct tally
@@ -103,7 +112,7 @@ export class ExpressionComponent implements OnInit {
   }
 
 
-  createTimer(){ this.interval = setInterval(() => { this.getSec = new Date().getSeconds(); if(this.getSec){this.seconds--;} if(this.seconds <= 0){this.timesUp(); } if(this.redTimer > 0){this.redTimer++;  console.log("RedTImer" + " " + this.redTimer); if(this.redTimer == 3){this.turnRed = false; this.keypadEntry = this.answer;} if(this.redTimer == 6){this.clearRedTimer();} /*inside end of red timer*/} if(this.blackTimer > 0){this.blackTimer++; console.log("Black TImer" + " " + this.blackTimer); if(this.blackTimer == 3){this.clearBlackTimer();}/*End of black timer*/}    }, 1000); }
+  createTimer(){ this.interval = setInterval(() => { this.getSec = new Date().getSeconds();  if(this.getSec){this.seconds--;} if(this.seconds <= 0){this.timesUp(); } if(this.redTimer > 0){this.redTimer++;  console.log("RedTImer" + " " + this.redTimer); if(this.redTimer == 3){this.turnRed = null; this.keypadEntry = this.answer;} if(this.redTimer == 5){this.clearRedTimer();} /*inside end of red timer*/} if(this.blackTimer > 0){this.blackTimer++; console.log("Black TImer" + " " + this.blackTimer); if(this.blackTimer == 2){this.clearBlackTimer();}/*End of black timer*/}    }, 1000); }
 
 
 
@@ -114,6 +123,7 @@ export class ExpressionComponent implements OnInit {
 
     //[showAnswer is the input form value]
     this.showAnswer = this.answer;
+    this.turnRed = null;
     this.keypadEntry = this.answer;
     this.value = null;
     this.placeHolder = this.showAnswer;
@@ -124,6 +134,8 @@ export class ExpressionComponent implements OnInit {
         this.incorrectCount++;
         console.log("Times UP:" + " " + this.answer + " " + "Loop: Incorrect:" + " " + this.incorrect);
     }
+
+   
 
     
 
@@ -175,20 +187,27 @@ changeFactors(event:any, random:boolean, multiples:boolean, factor:number){
     console.log("Rundo");
 }
 
-  save(event:any){
+  start(event:any){
+
+    
+     this.displaySettings = "none";
+     this.startAfterTimer();
+
+  }
+
+startAfterTimer(){
 
      this.seconds = this.selectedSeconds;
      this.random = this.selectedRandom;
      this.multiples = this.selectedMultiiples;
      this.factor = this.selectedFactors
 
-     this.showSettings(null);
-
+     this.multiply();
      this.createTimer();
 
-     console.log("Saved");
-  }
+     console.log("Challenge Started");
 
+}
        
 
   multiply():void {
@@ -319,8 +338,10 @@ changeFactors(event:any, random:boolean, multiples:boolean, factor:number){
        this.keyLog = [];
        this.keylogConverted = 0;
        this.answerLog = [];
-       this.keyPressCount = 0;
-       this.turnRed = false;
+       this.keyPadCount = 0;
+       this.turnRed = "black";
+       this.keysPressCount = 0;
+       this.ii = 0;
   }
 
   clearRedTimer(){
@@ -330,34 +351,31 @@ changeFactors(event:any, random:boolean, multiples:boolean, factor:number){
     this.multiply();
   }
 
+
   clearBlackTimer(){
 
     this.blackTimer = 0;
     this.multiply();
   }
 
-  showAnswer2(){
 
-    this.keypadEntry = this.answer;
-  }
-
-
-  keyPress(event:any){
+  keyPadPress(event:any){
 
    this.keyLog.push(Number(event.target.value));
    this.keylogConverted = Number(this.keyLog.join(""));
    this.keypadEntry = this.keylogConverted;
-   this.keyPressCount++;
+   this.keyPadCount++;
 
    console.log("Key Press Data", '\n' + " " + "KeyLog Converted:" + " " + this.keylogConverted + " " +  " KeyLog: "  
 
-     +  " " + this.keyLog + " " + " Answer Log: "  + this.answerLog + " " + " KeyLog Length: " + " " + this.keyLog.length + " " + "Key Press Count:" + " " + this.keyPressCount);
+     +  " " + this.keyLog + " " + " Answer Log: "  + this.answerLog + " " + " KeyLog Length: " + " " + this.keyLog.length + " " + "Key Pad Count:" + " " + this.keyPadCount);
 
 
-    if(this.keyPressCount == 1 && this.answerLog.length == 1){
+    if(this.keyPadCount == 1 && this.answerLog.length == 1){
 
       if(this.keyLog[0] == this.answerLog[0]){ 
 
+        this.turnRed = "green";
         console.log("Right");
         this.correct++; 
         this.blackTimer = 1;
@@ -365,7 +383,7 @@ changeFactors(event:any, random:boolean, multiples:boolean, factor:number){
       }
       else if(this.keyLog[0] != this.answerLog[0]){
 
-                this.turnRed = true;
+                this.turnRed = "red";
                 this.btnDisabled = true;
                 this.incorrect++;
                 this.redTimer = 1;
@@ -375,15 +393,16 @@ changeFactors(event:any, random:boolean, multiples:boolean, factor:number){
 
     if(this.answerLog.length == 2){ 
 
-        if(this.keyPressCount == 1){
+        if(this.keyPadCount == 1){
 
            if(this.keyLog[0] == this.answerLog[0]){ 
 
+             this.turnRed = "green";
             console.log("Right"); 
           }  
         else if(this.keyLog[0] != this.answerLog[0]){
 
-              this.turnRed = true;
+              this.turnRed = "red";
               this.btnDisabled = true;
               this.incorrect++;
               this.redTimer = 1;
@@ -391,17 +410,18 @@ changeFactors(event:any, random:boolean, multiples:boolean, factor:number){
         }  
       }
 
-      if(this.keyPressCount == 2){
+      if(this.keyPadCount == 2){
 
         if(this.keyLog[1] == this.answerLog[1]){
 
+            this.turnRed = "green";
             console.log("Right");
             this.correct++;
             this.blackTimer = 1;
           }
           else if(this.keyLog[1] != this.answerLog[1]){
 
-              this.turnRed = true;
+              this.turnRed = "red";
               this.btnDisabled = true;
               this.incorrect++;
               this.redTimer = 1;
@@ -414,15 +434,16 @@ changeFactors(event:any, random:boolean, multiples:boolean, factor:number){
 
     if(this.answerLog.length == 3){ 
 
-        if(this.keyPressCount == 1){
+        if(this.keyPadCount == 1){
 
            if(this.keyLog[0] == this.answerLog[0]){ 
 
+             this.turnRed = "green";
             console.log("Right"); 
           }  
         else if(this.keyLog[0] != this.answerLog[0]){
 
-              this.turnRed = true;
+              this.turnRed = "red";
               this.btnDisabled = true;
               this.incorrect++;
               this.redTimer = 1;
@@ -431,15 +452,16 @@ changeFactors(event:any, random:boolean, multiples:boolean, factor:number){
         }  
       }
 
-      if(this.keyPressCount == 2){
+      if(this.keyPadCount == 2){
 
            if(this.keyLog[1] == this.answerLog[1]){ 
 
+             this.turnRed = "green";
             console.log("Right"); 
           }  
         else if(this.keyLog[1] != this.answerLog[1]){
 
-              this.turnRed = true;
+              this.turnRed = "red";
               this.btnDisabled = true;
               this.incorrect++;
               this.redTimer = 1;
@@ -447,9 +469,11 @@ changeFactors(event:any, random:boolean, multiples:boolean, factor:number){
         }  
       }
 
-      if(this.keyPressCount == 3){
+      if(this.keyPadCount == 3){
 
            if(this.keyLog[2] == this.answerLog[2]){ 
+
+             this.turnRed = "green";
 
             console.log("Right"); 
             this.incorrect++;
@@ -457,7 +481,7 @@ changeFactors(event:any, random:boolean, multiples:boolean, factor:number){
           }  
         else if(this.keyLog[2] != this.answerLog[2]){
 
-              this.turnRed = true;
+              this.turnRed = "red";
               this.btnDisabled = true;
               this.incorrect++;
               this.redTimer = 1;
@@ -479,6 +503,55 @@ changeFactors(event:any, random:boolean, multiples:boolean, factor:number){
   }
 
 
+  getKeyPress(event:any){ 
+
+
+
+    this.eKey = Number(event.key);
+
+    if(this.eKey >= 0){ this.keysPressCount++; console.log(this.keysPressCount);}else{console.log("NOGO!!!");}
+
+
+    if(this.keysPressCount == 1 && this.eKey == this.answerLog[0]){
+
+        this.turnRed = "green";
+        console.log("1. Correct answer");
+
+    }else if(this.keysPressCount == 1 && this.eKey != this.answerLog[0]){
+
+      this.turnRed = "red";
+      console.log("1. Incorrect Answer" + " " + " TurnRed:" + " " + this.turnRed);
+    }
+
+    if(this.keysPressCount == 2 && this.eKey == this.answerLog[1]){
+
+       this.turnRed = "green";
+       console.log("2 Correct"); 
+
+    }else if(this.keysPressCount == 2 && this.eKey != this.answerLog[1]){
+
+       this.turnRed = "red";
+       console.log("2 Incorrect Answer");
+    }
+
+    if(this.keysPressCount == 3 && this.eKey == this.answerLog[2]){
+
+        this.turnRed = "green";
+        console.log("3 Correct!");
+
+    }else if(this.keysPressCount == 3 && this.eKey != this.answerLog[2]){
+
+       this.turnRed = "red";
+       console.log("3 Incorrect Answer");
+    }
+
+     this.ii++;
+
+  
+    console.log("Keypress event fired!" + " " + " II:" + " " + this.ii);
+  }
+
+
   submit(event:any){
 
     // if answer entered was correct but not necessarily right
@@ -490,9 +563,12 @@ changeFactors(event:any, random:boolean, multiples:boolean, factor:number){
         console.log("1.Answer Submitted After Revealed" + " " + "1." + this.incorrectCount);
 
     }
+
+
     //if input was correctfirst try
     if(this.input === this.answer && this.showAnswer !== this.answer && this.incorrectCount < 1){
 
+      this.turnRed = "green";
       this.correct++;
       this.incorrectCount = 0;
       
@@ -503,11 +579,12 @@ changeFactors(event:any, random:boolean, multiples:boolean, factor:number){
     if(this.input !== this.answer){
 
       this.attempt++;
+ 
       event.target.reset();
       console.log("Attempt " + this.attempt);
     }
     //revelas answer after two attempts
-    if(this.input !== this.answer && this.attempt == 2){
+    if(this.input !== this.answer && this.attempt == 1){
 
       this.placeHolder = this.answer;
     }

@@ -28,6 +28,7 @@
 
         <div class="inside-box clearfix">
           <h4>Settings</h4>
+          <p>Select the options below, then press start to begin.</p>
           <i id="close" class="bi bi-x" (click)="closeSettings($event)"></i>
         </div>
 
@@ -39,12 +40,12 @@
             <ul class="settings-ul clearfix">
 
             <li>
-              <input type="checkbox" name="sec" class="chk-boxes" (click)="changeSettings($event, 60)">
+              <input type="checkbox" name="sec" class="chk-boxes" (click)="changeSettings($event, 65)">
               <label for="sec"> 60 sec </label>
             </li>
 
             <li>
-              <input type="checkbox" name="sec"  class="chk-boxes"(click)="changeSettings($event, 180)">
+              <input type="checkbox" name="sec"  class="chk-boxes"(click)="changeSettings($event, 185)">
               <label for="sec"> 120 sec </label>
             </li>
           </ul>
@@ -58,6 +59,7 @@
           <h5 class="settings-title">Multiples</h5>
 
           <ul class="settings-ul clearfix">
+
 
             <li>
               <input (click)="changeFactors($event, true, false, 0)" type="checkbox" name="m" class="chk-boxes">  

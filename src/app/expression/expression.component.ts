@@ -24,7 +24,7 @@ export class ExpressionComponent implements OnInit {
   f2 = 0;
 
 
-  displaySettings = "none";
+  displaySettings = "block";
   displayKeypad = "none";
   keyPadRequest = 0;
   clicks = 0;

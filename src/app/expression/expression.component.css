@@ -73,6 +73,12 @@ input[type=number] {
 .inside-box h4{
 
   display: inline-block;
+} 
+
+.inside-box p{
+
+  padding: 5px 0;
+  margin: 0;
 }
 
 .inside-box{
@@ -257,7 +263,9 @@ display: block;
 
 #close{
 
- float: right;
+ position: absolute;
+ right: 5px;
+ top:5px;
  height: auto;
  width: auto;
 }

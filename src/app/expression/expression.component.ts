@@ -58,12 +58,15 @@ export class ExpressionComponent implements OnInit {
   keyLog:any = [];
   answerLog:any[] = [];
 
+  ansC = 0;
+  keyC = 1;
+
 
   turnRed:any = null;
   redTimer = 0; // if answer is wrong
   blackTimer = 0; //if answer i sright
 
-  eKey:any = null;
+  eKey:number = NaN;
   keyPressAnsLog:any = [];
   answerLogTwo:any = [];
 
@@ -342,6 +345,8 @@ startAfterTimer(){
        this.turnRed = "black";
        this.keysPressCount = 0;
        this.ii = 0;
+       this.ansC = 0;
+       this.keyC = 1; 
   }
 
   clearRedTimer(){
@@ -508,47 +513,28 @@ startAfterTimer(){
 
 
     this.eKey = Number(event.key);
+    
 
-    if(this.eKey >= 0){ this.keysPressCount++; console.log(this.keysPressCount);}else{console.log("NOGO!!!");}
+    if(this.eKey >= 0){this.keysPressCount++; console.log(this.keysPressCount);}else{console.log("NOGO!!!");}
 
 
-    if(this.keysPressCount == 1 && this.eKey == this.answerLog[0]){
+    if(this.keysPressCount == this.keyC && this.eKey == this.answerLog[this.ansC]){
 
         this.turnRed = "green";
-        console.log("1. Correct answer");
+        console.log("Answer C" + " " + this.ansC + " " + "KeyCr" + " " + this.keyC);
 
-    }else if(this.keysPressCount == 1 && this.eKey != this.answerLog[0]){
+    }else if(this.keysPressCount == this.keyC && this.eKey != this.answerLog[this.ansC]){
 
       this.turnRed = "red";
-      console.log("1. Incorrect Answer" + " " + " TurnRed:" + " " + this.turnRed);
+      console.log(this.keysPressCount + "." + "Incorrect Answer" + " " + " TurnRed:" + " " + this.turnRed);
     }
 
-    if(this.keysPressCount == 2 && this.eKey == this.answerLog[1]){
+    this.ansC++;
+    this.keyC++;
+    this.ii++;
 
-       this.turnRed = "green";
-       console.log("2 Correct"); 
-
-    }else if(this.keysPressCount == 2 && this.eKey != this.answerLog[1]){
-
-       this.turnRed = "red";
-       console.log("2 Incorrect Answer");
-    }
-
-    if(this.keysPressCount == 3 && this.eKey == this.answerLog[2]){
-
-        this.turnRed = "green";
-        console.log("3 Correct!");
-
-    }else if(this.keysPressCount == 3 && this.eKey != this.answerLog[2]){
-
-       this.turnRed = "red";
-       console.log("3 Incorrect Answer");
-    }
-
-     this.ii++;
-
+     console.log("Keypress event fired!" + " " + " KeyPress Count:" + " " + this.ii);
   
-    console.log("Keypress event fired!" + " " + " II:" + " " + this.ii);
   }
 
 

@@ -4,25 +4,22 @@
 
   <div class="row">
 
-    <div class="col-sm-3">
 
-      <ul id="tally" class="clearfix">
-      <li title="Correct"><span class="green">Correct:</span> {{correct}} </li>
-       <li title="Incorrect"><span class="red"> Incorrect:</span> {{incorrect}} </li>
-
-     </ul>
+    <div class="displayBar col">
+      <ul class="clearfix">
+        <li title="Timer" id="timer"><b>Timer:</b> {{seconds}}</li>
+        <li class="usrTools"> <i class="bi bi-gear" title="Settings" (click)="showSettings($event)"></i></li>
+        <li class="usrTools"><i class="bi bi-keyboard" title="Keyboard" (click)="showKeypad($event)"></i></li>
+      </ul>
+      <!--<p title="Timer" id="timer"><b>Timer:</b> {{seconds}} </p>-->
     </div>
 
-    <div class="col-sm-2 offset-sm-2">
-      <p title="Timer" id="timer"><b>Timer:</b> {{seconds}} </p>
-    </div>
-
-
+<!--
     <div id="settings" class="col-sm-3 offset-sm-2">
       <i class="bi bi-gear" title="Settings" (click)="showSettings($event)"></i>
       <i class="bi bi-keyboard" title="Keyboard" (click)="showKeypad($event)"></i>
     </div>
-
+-->
       <div [style.display]="displaySettings" class="settings-box col">
 
 
@@ -190,13 +187,80 @@
   </div>
 
 
+
+  <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  Results
+</button>
+
+<!-- Modal -->
+<div #bs class="modal fade" id="staticBackdrop"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Results</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p style="text-align: center;">Correct  {{correct}} / Incorrect {{incorrect}}</p>
+
+<!--
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+              Tables to practice
+            </button>
+            </h2>
+            <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+              <p>Zero: {{ zero.join()}}</p>
+              <p>One's: {{ ones.join()}}</p>
+              <p>Two's:{{ two.join()}}</p>
+              <p>Three's {{ three.join()}}</p>
+              <p>Forur's : {{ four.join()}}</p>
+              <p>Five's: {{ five.join()}}</p>
+              <p>Six's: {{ six.join()}}</p>
+              <p>Seven's: {{ seven.join()}}</p>
+              <p>Eight's: {{ eight.join()}}</p>
+              <p>Nine's: {{ nine.join()}}</p>
+              <p>Ten's: {{ ten.join()}}</p>
+              <p>Eleven's:{{ eleven.join()}}</p>
+              <p>Twelve's: {{ twelve.join()}}</p>
+            </div>
+          </div>
+        </div>
+-->
+      </div> <!-- and Modal Body -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <!--<button type="button" class="btn btn-primary" data-bs-dismiss="modal">Start</button>-->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 <!--
 
-  <div class="row" *ngIf = "timerComplete">
-    <div class="col">
+  <div id="resutls" *ngIf = "timerComplete">
 
-      <h2>Practice</h2>
+      <div id="resutls-box">
 
+      <h5>Results</h5>
+
+
+      <p>Correct  {{correct}} / Incorrect {{incorrect}}</p>
+
+      <button (click)="reset($event)">Retry</button>
+
+    </div>
+
+  </div>
+
+-->
+<!--
       <p>Zero: {{ zero.join(" ")}}</p>
       <p>One's: {{ ones.join(" ")}}</p>
       <p>Two's:{{  two.join(" ")}}</p>
@@ -210,10 +274,10 @@
       <p>Ten's: {{ ten.join(" ")}}</p>
       <p>Eleven's:{{ eleven.join(" ")}}</p>
       <p>Twelve's: {{ twelve.join(" ")}}</p>
-    </div>
-  </div>
-
 -->
+
+ 
+
 
 </div>
 

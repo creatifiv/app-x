@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+
+import * as bootstrap from 'bootstrap';
+
+
 
 @Component({
   selector: 'app-expression',
@@ -9,11 +13,15 @@ export class ExpressionComponent implements OnInit {
 
   constructor() { }
 
+  @ViewChild('bs') div:any;
+
   ngOnInit() { this.init(); }
+  ngAfterViewInit() { console.log(this.div); let bs = new bootstrap.Modal(this.div, {keyboard: true}); bs.toggle();}
+
+
 
 
   zero:any = []; ones:any = [];two:any = []; three:any = []; four:any = []; five:any = []; six:any = []; seven:any = []; eight:any = []; nine:any = []; ten:any = []; eleven:any = []; twelve:any = [];
-
 
 
   x = 0; //Logs multiples correct
@@ -24,7 +32,9 @@ export class ExpressionComponent implements OnInit {
   f2 = 0;
 
 
-  displaySettings = "block";
+
+
+  displaySettings = "none";
   displayKeypad = "none";
   keyPadRequest = 0;
   clicks = 0;
@@ -77,7 +87,7 @@ export class ExpressionComponent implements OnInit {
   interval: any;
 
   seconds = 0; //Set timer
-  timerComplete = false;
+  timerComplete = true;
   timeToAnswer = 7;
 
   getSec = 0; //Get seconds via date object
@@ -109,18 +119,34 @@ export class ExpressionComponent implements OnInit {
   */
 
 
-  stopTimer(event:any):any{
+  stopTimer(){
 
     clearTimeout(this.interval);
+    console.log("Timer Stopped");
   }
 
 
-  createTimer(){ this.interval = setInterval(() => { this.getSec = new Date().getSeconds();  if(this.getSec){this.seconds--;} if(this.seconds <= 0){this.timesUp(); } if(this.redTimer > 0){this.redTimer++;  console.log("RedTImer" + " " + this.redTimer); if(this.redTimer == 3){this.turnRed = null; this.keypadEntry = this.answer;} if(this.redTimer == 5){this.clearRedTimer();} /*inside end of red timer*/} if(this.blackTimer > 0){this.blackTimer++; console.log("Black TImer" + " " + this.blackTimer); if(this.blackTimer == 2){this.clearBlackTimer();}/*End of black timer*/}    }, 1000); }
+  createTimer(){ 
+
+      this.interval = setInterval(() => { 
+      this.getSec = new Date().getSeconds(); 
+      console.log("Interval" + " " + this.interval);  
+      if(this.getSec){this.seconds--;} 
+      if(this.seconds <= 0){this.timesUp(); } 
+      if(this.redTimer > 0){this.redTimer++;  console.log("RedTImer" + " " + this.redTimer); 
+      if(this.redTimer == 3){this.turnRed = null; this.keypadEntry = this.answer;} 
+      if(this.redTimer == 5){this.clearRedTimer();} /*inside end of red timer*/} 
+      if(this.blackTimer > 0){this.blackTimer++; console.log("Black TImer" + " " + this.blackTimer); 
+      if(this.blackTimer == 2){this.clearBlackTimer();}/*End of black timer*/}    }, 1000); 
+
+    };
+
 
 
 
   timesUp(){
 
+    //this.stopTimer();
     this.seconds = 0;
     this.timerComplete = true;
 
@@ -138,9 +164,6 @@ export class ExpressionComponent implements OnInit {
         console.log("Times UP:" + " " + this.answer + " " + "Loop: Incorrect:" + " " + this.incorrect);
     }
 
-   
-
-    
 
   }
 
@@ -194,6 +217,7 @@ changeFactors(event:any, random:boolean, multiples:boolean, factor:number){
 
     
      this.displaySettings = "none";
+     this.stopTimer();
      this.startAfterTimer();
 
   }
@@ -208,7 +232,7 @@ startAfterTimer(){
      this.multiply();
      this.createTimer();
 
-     console.log("Challenge Started");
+     console.log("Startbutton clicked");
 
 }
        
@@ -241,7 +265,7 @@ startAfterTimer(){
 
     }
 
-
+      console.log("Multiply() Fired");
   }
 
   convertAnswer(){
@@ -254,7 +278,7 @@ startAfterTimer(){
 
     for(i; this.answerLog.length < this.answerToString.length; i++){
 
-         this.answerLog.push(this.answerToString.charAt(i));
+         this.answerLog.push(Number(this.answerToString.charAt(i)));
 
          console.log('\n', "Answe Log Conversion Called" + " " + '\n', "Answer Log Check:" + " " + this.answerLog);
     }
@@ -272,7 +296,7 @@ startAfterTimer(){
   tally(){
 
 
-    switch(this.f1){
+    switch(this.f2){
 
 
       case 0:
@@ -325,14 +349,13 @@ startAfterTimer(){
 
       case 12:
       this.twelve[this.x] = this.f1 + " x " + this.f2 + " ";
-      break;
-
-    
 
     }
 
     console.log("Tallied:" + " " + this.f1 + "X" + this.f2);
 }
+
+
 
 
   clearLogs(){
@@ -371,9 +394,7 @@ startAfterTimer(){
    this.keypadEntry = this.keylogConverted;
    this.keyPadCount++;
 
-   console.log("Key Press Data", '\n' + " " + "KeyLog Converted:" + " " + this.keylogConverted + " " +  " KeyLog: "  
-
-     +  " " + this.keyLog + " " + " Answer Log: "  + this.answerLog + " " + " KeyLog Length: " + " " + this.keyLog.length + " " + "Key Pad Count:" + " " + this.keyPadCount);
+   console.log("Key Press Data", '\n' + " " + "KeyLog Converted:" + " " + this.keylogConverted + " " +  " KeyLog: " +  " " + this.keyLog + " " + " Answer Log: "  + this.answerLog + " " + " KeyLog Length: " + " " + this.keyLog.length + " " + "Key Pad Count:" + " " + this.keyPadCount);
 
 
     if(this.keyPadCount == 1 && this.answerLog.length == 1){
@@ -507,6 +528,13 @@ startAfterTimer(){
       console.log(this.keylogConverted);
   }
 
+  reset(event:any){
+
+      this.timerComplete = false;
+      this.displaySettings = "block";
+
+  }
+
 
   getKeyPress(event:any){ 
 
@@ -515,18 +543,25 @@ startAfterTimer(){
     this.eKey = Number(event.key);
     
 
-    if(this.eKey >= 0){this.keysPressCount++; console.log(this.keysPressCount);}else{console.log("NOGO!!!");}
+    if(this.eKey >= 0){
 
+        this.keysPressCount++; 
+        console.log(this.keysPressCount);
 
-    if(this.keysPressCount == this.keyC && this.eKey == this.answerLog[this.ansC]){
+      }else{
+
+        console.log("Key Typed" + " " + this.eKey);
+      }
+
+    if(this.keysPressCount == this.keyC && this.eKey === this.answerLog[this.ansC]){
 
         this.turnRed = "green";
         console.log("Answer C" + " " + this.ansC + " " + "KeyCr" + " " + this.keyC);
 
-    }else if(this.keysPressCount == this.keyC && this.eKey != this.answerLog[this.ansC]){
+    }else if(this.keysPressCount == this.keyC && this.eKey !== this.answerLog[this.ansC]){
 
       this.turnRed = "red";
-      console.log(this.keysPressCount + "." + "Incorrect Answer" + " " + " TurnRed:" + " " + this.turnRed);
+      console.log(this.keysPressCount + "." + "Incorrect Answer" + " " + " TurnRed:" + " " + this.turnRed + " " + "Anslog Type " + typeof this.input);
     }
 
     this.ansC++;

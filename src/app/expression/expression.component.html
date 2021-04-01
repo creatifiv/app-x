@@ -1,25 +1,28 @@
 
 
+<div class="pp"></div>
+
  <div class="container">
 
   <div class="row">
 
 
-    <div class="displayBar col">
-      <ul class="clearfix">
-        <li title="Timer" id="timer"><b>Timer:</b> {{seconds}}</li>
-        <li class="usrTools"> <i class="bi bi-gear" title="Settings" (click)="showSettings($event)"></i></li>
-        <li class="usrTools"><i class="bi bi-keyboard" title="Keyboard" (click)="showKeypad($event)"></i></li>
+
+    <div id="settings" class="clearfix">
+
+      <ul>
+
+        <li>{{seconds}}'s</li>
+        <li class="tally"> <span title="Correct">{{correct}}</span> / <span title="incorrect">{{incorrect}}</span></li>
+
+        <li class="usrTools"> <i class="bi bi-gear" title="Settings" (click)="showSettings($event)"></i> </li>
+        <li class="usrTools"> <i class="bi bi-keyboard" title="Keyboard" (click)="showKeypad($event)"></i> </li>
+        
+
       </ul>
-      <!--<p title="Timer" id="timer"><b>Timer:</b> {{seconds}} </p>-->
+
     </div>
 
-<!--
-    <div id="settings" class="col-sm-3 offset-sm-2">
-      <i class="bi bi-gear" title="Settings" (click)="showSettings($event)"></i>
-      <i class="bi bi-keyboard" title="Keyboard" (click)="showKeypad($event)"></i>
-    </div>
--->
       <div [style.display]="displaySettings" class="settings-box col">
 
 
@@ -188,12 +191,12 @@
 
 
 
-  <!-- Button trigger modal -->
+ <!--
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
   Results
 </button>
 
-<!-- Modal -->
+
 <div #bs class="modal fade" id="staticBackdrop"  data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -203,7 +206,7 @@
       </div>
       <div class="modal-body">
         <p style="text-align: center;">Correct  {{correct}} / Incorrect {{incorrect}}</p>
-
+-->
 <!--
         <div class="accordion accordion-flush" id="accordionFlushExample">
           <div class="accordion-item">
@@ -230,16 +233,16 @@
             </div>
           </div>
         </div>
--->
-      </div> <!-- and Modal Body -->
+
+      </div>  and Modal Body --
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <!--<button type="button" class="btn btn-primary" data-bs-dismiss="modal">Start</button>-->
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Start</button>
       </div>
     </div>
   </div>
 </div>
-
+-->
 
 
 <!--

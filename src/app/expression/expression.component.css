@@ -55,6 +55,19 @@ input[type=number] {
   position: relative;
 }
 
+
+#settings ul li{
+
+  float: left;
+  margin-top: 10px;
+  display: inline-block;
+}
+
+.usrTools{
+
+  float: right !important;
+}
+
 .settings-box{
 
   width: 600px;
@@ -120,16 +133,6 @@ input[type=number] {
 }
 */
 
-.displayBar ul li{
-
-  display: inline-block;
-}
-
-.usrTools{
-
-  float: right;
-  margin-top: 10px;
-}
 
 #timer{
 
@@ -316,6 +319,7 @@ display: block;
 .bi{ 
 
   font-size: 24px;
+  line-height: 0;
 
  }
  .bi:hover{
@@ -323,5 +327,15 @@ display: block;
     cursor: pointer;
  }
 
+.tally{
+
+  position: absolute;
+  left: 2px;
+  right: 2px;
+  margin-left: auto;
+  margin-right: auto;
+  width:100px;
+  text-align: center;
+}
 
 

@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 
-import * as bootstrap from 'bootstrap';
-
+//import * as bootstrap from 'bootstrap';
 
 
 @Component({
@@ -13,10 +12,10 @@ export class ExpressionComponent implements OnInit {
 
   constructor() { }
 
-  @ViewChild('bs') div:any;
+  //@ViewChild('bs') div:any;
 
   ngOnInit() { this.init(); }
-  ngAfterViewInit() { console.log(this.div); let bs = new bootstrap.Modal(this.div, {keyboard: true}); bs.toggle();}
+  //ngAfterViewInit() { let bs = new bootstrap.Modal(this.div);}
 
 
 

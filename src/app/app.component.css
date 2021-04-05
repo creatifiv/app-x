@@ -9,6 +9,31 @@ black: #3f3f40 (?)
 
 
 */
+/*
+.bg-light{
+
+	background-color: #f5e836 !important;
+}
+
+.navbar-light .navbar-brand{
+
+	color: white !important;
+}
+
+.navbar-light .navbar-nav .nav-link{
+
+	color: white !important;
+}
+*/
+
+/*
+.navbar-light .navbar-nav .nav-link.active, 
+.navbar-light .navbar-nav .show>.nav-link{
+
+	color: white;
+}
+*/
+
 
 
 footer{
@@ -17,9 +42,8 @@ footer{
 	bottom: 0;
 	width: 100%;
 	padding: 20px 0;
-	color: white;
+	color: black;
 	text-align: center;
-	background-color: #3f3f40;
 
 }
 

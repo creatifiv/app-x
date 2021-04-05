@@ -295,17 +295,13 @@ display: block;
   margin-right: 4px;
 }
 
-.start{
+.myBtn{
 
   background-color: #d584db;
-  color: white;
   float: right;
-  padding: 10px;
-  width: 120px;
-  font-weight: bold;
-  border: none;
-
 }
+
+
 
 #close{
 

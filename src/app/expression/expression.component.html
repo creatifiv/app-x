@@ -23,30 +23,44 @@
 
     </div>
 
+
+
+
+
+
+
+
+
+
       <div [style.display]="displaySettings" class="settings-box col">
 
 
         <div class="inside-box clearfix">
           <h4>Settings</h4>
-          <p>Select the options below, then press start to begin.</p>
+          <p>Select the options below, and then press start to begin.</p>
           <i id="close" class="bi bi-x" (click)="closeSettings($event)"></i>
         </div>
 
 
         <div class="inside-box">
 
-          <h5 class="settings-title">Time</h5>
+          <h5 class="settings-title">Timer</h5>
             
             <ul class="settings-ul clearfix">
 
+              <li>
+                 <input type="radio" name="sec" id="30sec" class="chk-boxes" (click)="changeSettings($event, 30)">
+              <label for="30sec"> 30 sec </label>
+              </li>
+
             <li>
-              <input type="checkbox" name="sec" class="chk-boxes" (click)="changeSettings($event, 65)">
-              <label for="sec"> 60 sec </label>
+              <input type="radio" name="sec" id="60sec" class="chk-boxes" (click)="changeSettings($event, 65)">
+              <label for="60sec"> 60 sec </label>
             </li>
 
             <li>
-              <input type="checkbox" name="sec"  class="chk-boxes"(click)="changeSettings($event, 185)">
-              <label for="sec"> 120 sec </label>
+              <input type="radio" name="sec"  id="120sec" class="chk-boxes"(click)="changeSettings($event, 120)">
+              <label for="120sec"> 120 sec </label>
             </li>
           </ul>
 
@@ -62,68 +76,69 @@
 
 
             <li>
-              <input (click)="changeFactors($event, true, false, 0)" type="checkbox" name="m" class="chk-boxes">  
-              <label for="m"> Random</label>
+              <input (click)="changeFactors($event, true, false, 0)" id="random" type="radio" name="m" class="chk-boxes">  
+              <label for="random"> Random</label>
             </li>
             <li> 
-              <input (click)="changeFactors($event, false, true, 0)" type="checkbox" name="m" class="chk-boxes"> 
-              <label for="m"> Mutiples of 0</label>
+              <input (click)="changeFactors($event, false, true, 0)" id="m0" type="radio" name="m" class="chk-boxes"> 
+              <label for="m0"> Mutiples of 0</label>
             </li>
             <li> 
-              <input (click)="changeFactors($event, false, true, 1)" type="checkbox" name="m" class="chk-boxes"> 
-              <label for="m"> Mutiples of 1</label>
+              <input (click)="changeFactors($event, false, true, 1)" id="m1" type="radio" name="m" class="chk-boxes"> 
+              <label for="m1"> Mutiples of 1</label>
             </li>
             <li> 
-              <input (click)="changeFactors($event, false, true, 2)" type="checkbox" name="m" class="chk-boxes"> 
-              <label for="m"> Mutiples of 2</label>
+              <input (click)="changeFactors($event, false, true, 2)" id="m2" type="radio" name="m" class="chk-boxes"> 
+              <label for="m2"> Mutiples of 2</label>
             </li>
             <li> 
-              <input (click)="changeFactors($event, false, true, 3)" type="checkbox" name="m" class="chk-boxes"> 
-              <label for="m"> Mutiples of 3</label>
+              <input (click)="changeFactors($event, false, true, 3)" id="m3" type="radio" name="m" class="chk-boxes"> 
+              <label for="m3"> Mutiples of 3</label>
             </li>
             <li> 
-              <input (click)="changeFactors($event, false, true, 4)" type="checkbox" name="m" class="chk-boxes"> 
-              <label for="m"> Mutiples of 4</label>
+              <input (click)="changeFactors($event, false, true, 4)" id="m4" type="radio" name="m" class="chk-boxes"> 
+              <label for="m4"> Mutiples of 4</label>
             </li>
             <li> 
-              <input (click)="changeFactors($event, false, true, 5)" type="checkbox" name="m" class="chk-boxes"> 
-              <label for="m"> Mutiples of 5</label>
+              <input (click)="changeFactors($event, false, true, 5)" id="m5" type="radio" name="m" class="chk-boxes"> 
+              <label for="m5"> Mutiples of 5</label>
             </li>
             <li> 
-              <input (click)="changeFactors($event, false, true, 6)" type="checkbox" name="m" class="chk-boxes"> 
-              <label for="m"> Mutiples of 6</label>
+              <input (click)="changeFactors($event, false, true, 6)" id="m6" type="radio" name="m" class="chk-boxes"> 
+              <label for="m6"> Mutiples of 6</label>
             </li>
             <li> 
-              <input (click)="changeFactors($event, false, true, 7)" type="checkbox" name="m" class="chk-boxes"> 
-              <label for="m"> Mutiples of 7</label>
+              <input (click)="changeFactors($event, false, true, 7)" id="m7" type="radio" name="m" class="chk-boxes"> 
+              <label for="m7"> Mutiples of 7</label>
             </li>
             <li> 
-              <input (click)="changeFactors($event, false, true, 8)" type="checkbox" name="m" class="chk-boxes"> 
-              <label for="m"> Mutiples of 8</label>
+              <input (click)="changeFactors($event, false, true, 8)" id="m8" type="radio" name="m" class="chk-boxes"> 
+              <label for="m8"> Mutiples of 8</label>
             </li>
             <li> 
-              <input (click)="changeFactors($event, false, true, 9)" type="checkbox" name="m" class="chk-boxes"> 
-              <label for="m"> Mutiples of 9</label>
+              <input (click)="changeFactors($event, false, true, 9)" id="m9" type="radio" name="m" class="chk-boxes"> 
+              <label for="m9"> Mutiples of 9</label>
             </li>
             <li> 
-              <input (click)="changeFactors($event, false, true, 10)" type="checkbox" name="m" class="chk-boxes"> 
-              <label for="m"> Mutiples of 10</label>
+              <input (click)="changeFactors($event, false, true, 10)" id="m10" type="radio" name="m" class="chk-boxes"> 
+              <label for="m10"> Mutiples of 10</label>
             </li>
             <li> 
-              <input (click)="changeFactors($event, false, true, 11)" type="checkbox" name="m" class="chk-boxes"> 
-              <label for="m"> Mutiples of 11</label>
+              <input (click)="changeFactors($event, false, true, 11)" id="m11" type="radio" name="m" class="chk-boxes"> 
+              <label for="m11"> Mutiples of 11</label>
             </li>
             <li> 
-              <input (click)="changeFactors($event, false, true, 12)" type="checkbox" name="m" class="chk-boxes"> 
-              <label for="m"> Mutiples of 12</label>
+              <input (click)="changeFactors($event, false, true, 12)" id="m12" type="radio" name="m" class="chk-boxes"> 
+              <label for="m12"> Mutiples of 12</label>
             </li>
 
           </ul>
 
         </div>
 
-        <div class="inside-box clearfix">
-          <button class="start" (click)="start($event)">START</button>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" (click)="closeSettings($event)">CLOSE</button>
+          <button class="btn btn-primary" (click)="start($event)">START</button>
         </div>
 
       </div> <!--end Settings Box -->
@@ -189,9 +204,8 @@
 
   </div>
 
-
-
- <!--
+<!--
+ 
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
   Results
 </button>
@@ -206,8 +220,7 @@
       </div>
       <div class="modal-body">
         <p style="text-align: center;">Correct  {{correct}} / Incorrect {{incorrect}}</p>
--->
-<!--
+
         <div class="accordion accordion-flush" id="accordionFlushExample">
           <div class="accordion-item">
             <h2 class="accordion-header" id="flush-headingOne">
@@ -234,18 +247,20 @@
           </div>
         </div>
 
-      </div>  and Modal Body --
+
+
+      </div>  !--and Modal Body --
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Start</button>
       </div>
     </div>
   </div>
-</div>
--->
+</div>-->
 
 
-<!--
+
+<!-- 
 
   <div id="resutls" *ngIf = "timerComplete">
 
@@ -256,7 +271,7 @@
 
       <p>Correct  {{correct}} / Incorrect {{incorrect}}</p>
 
-      <button (click)="reset($event)">Retry</button>
+      <button>Retry</button>
 
     </div>
 
@@ -284,7 +299,6 @@
 
 </div>
 
-<div class="spacer"></div>
 
 
 

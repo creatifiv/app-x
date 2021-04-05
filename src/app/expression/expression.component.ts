@@ -33,7 +33,7 @@ export class ExpressionComponent implements OnInit {
 
 
 
-  displaySettings = "none";
+  displaySettings = "block";
   displayKeypad = "none";
   keyPadRequest = 0;
   clicks = 0;
@@ -212,10 +212,18 @@ changeFactors(event:any, random:boolean, multiples:boolean, factor:number){
     console.log("Rundo");
 }
 
+resetTally(){
+
+	this.correct = 0;
+	this.incorrect = 0;
+	this.placeHolder = " ";
+}
+
   start(event:any){
 
     
      this.displaySettings = "none";
+     this.resetTally();
      this.stopTimer();
      this.startAfterTimer();
 
@@ -227,6 +235,7 @@ startAfterTimer(){
      this.random = this.selectedRandom;
      this.multiples = this.selectedMultiiples;
      this.factor = this.selectedFactors
+
 
      this.multiply();
      this.createTimer();
@@ -527,20 +536,13 @@ startAfterTimer(){
       console.log(this.keylogConverted);
   }
 
-  reset(event:any){
-
-      this.timerComplete = false;
-      this.displaySettings = "block";
-
-  }
-
+  
 
   getKeyPress(event:any){ 
 
 
 
-    this.eKey = Number(event.key);
-    
+    this.eKey = Number(event.key);    
 
     if(this.eKey >= 0){
 

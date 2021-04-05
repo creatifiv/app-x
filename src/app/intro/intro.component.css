@@ -1,4 +1,11 @@
 
+h2{ 
+
+	text-align: center;
+
+ }
+
+
 
 ul{
 
@@ -26,6 +33,16 @@ button{
 }
 
 
+.center-content{
+
+	text-align: center;
+}
+
+.center-content img{
+
+	width: 250px;
+	height: 250px;
+}
 
 
 .space{

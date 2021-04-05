@@ -6,8 +6,9 @@ import { ExpressionComponent } from '../expression/expression.component';
 
 const routes: Routes = [
 
-	{ path:'intro-component', component: IntroComponent},
-	{ path:'expression-component', component: ExpressionComponent},
+	{ path: '', redirectTo: '/home', pathMatch: 'full' },
+	{ path:'home', component: IntroComponent},
+	{ path:'challenge-1', component: ExpressionComponent},
 
 ];
 

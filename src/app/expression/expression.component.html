@@ -13,7 +13,7 @@
       <ul>
 
         <li>{{seconds}}'s</li>
-        <li class="tally"> <span title="Correct">{{correct}}</span> / <span title="incorrect">{{incorrect}}</span></li>
+        <li class="tally"> <span title="Correct">{{correct}}</span> / <span title="correct">{{correct}}</span></li>
 
         <li class="usrTools"> <i class="bi bi-gear" title="Settings" (click)="showSettings($event)"></i> </li>
         <li class="usrTools"> <i class="bi bi-keyboard" title="Keyboard" (click)="showKeypad($event)"></i> </li>
@@ -24,56 +24,41 @@
     </div>
 
 
+    <div class="modal fade" id="staticBackdrop" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" #myModal>
 
+      <div [style.display]="displaySettings" class="modal-dialog">
 
+        <div class="modal-content">
 
-
-
-
-
-
-      <div [style.display]="displaySettings" class="settings-box col">
-
-
-        <div class="inside-box clearfix">
-          <h4>Settings</h4>
-          <p>Select the options below, and then press start to begin.</p>
-          <i id="close" class="bi bi-x" (click)="closeSettings($event)"></i>
+        <div class="modal-header">
+          <h5 class="modal-title">Settings</h5>
+          <button id="close" type="button" class="btn-close" (click)="closeSettings($event)"></button>
         </div>
 
 
-        <div class="inside-box">
+        <div class="modal-body">
 
           <h5 class="settings-title">Timer</h5>
-            
             <ul class="settings-ul clearfix">
-
               <li>
                  <input type="radio" name="sec" id="30sec" class="chk-boxes" (click)="changeSettings($event, 30)">
               <label for="30sec"> 30 sec </label>
               </li>
-
             <li>
               <input type="radio" name="sec" id="60sec" class="chk-boxes" (click)="changeSettings($event, 65)">
               <label for="60sec"> 60 sec </label>
             </li>
-
             <li>
               <input type="radio" name="sec"  id="120sec" class="chk-boxes"(click)="changeSettings($event, 120)">
               <label for="120sec"> 120 sec </label>
             </li>
           </ul>
 
-        </div>
 
-
-        <div class="inside-box">
 
 
           <h5 class="settings-title">Multiples</h5>
-
           <ul class="settings-ul clearfix">
-
 
             <li>
               <input (click)="changeFactors($event, true, false, 0)" id="random" type="radio" name="m" class="chk-boxes">  
@@ -133,17 +118,24 @@
             </li>
 
           </ul>
+        
 
         </div>
 
-        <div class="modal-footer">
-          <button class="btn btn-secondary" (click)="closeSettings($event)">CLOSE</button>
-          <button class="btn btn-primary" (click)="start($event)">START</button>
-        </div>
 
-      </div> <!--end Settings Box -->
+        
 
-    </div><!-- end row -->
+          <div class="modal-footer">
+            <button class="btn btn-secondary" (click)="closeSettings($event)">CLOSE</button>
+            <button class="btn btn-primary" (click)="start($event)">START</button>
+          </div>
+
+      </div> 
+
+    </div>
+</div>
+
+    </div> <!-- end row -->
 
 
 
@@ -160,14 +152,14 @@
   <div class="row">
 
 
-    <div [class]="moveExpression"> <!--col-sm-5 offset-sm-1-->
+    <div  [style.display] ="hideExpression" [class]="moveExpression"> <!--col-sm-5 offset-sm-1-->
       <p id="expression">  
         <span class="factor1">{{f1}}</span> 
         <span class="factor2">{{f2}}</span>
         <span id="operator">x</span>  
       </p>
       
-      <form action=" " id="form" (submit) ="submit($event)" [style.display] = "hideForm">
+      <form action="#" id="form" (submit) ="submit($event)" [style.display] = "hideForm">
 
         <input id="input" type="number" [class]="turnRed" [value] = "value" [placeholder] = "placeHolder" autocomplete="off"  (keypress)="getKeyPress($event)" (input) = "getInput($event)" >
 

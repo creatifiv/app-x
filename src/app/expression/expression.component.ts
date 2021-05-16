@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 
-//import * as bootstrap from 'bootstrap';
+import * as bootstrap from 'bootstrap';
 
 
 @Component({
@@ -12,13 +12,16 @@ export class ExpressionComponent implements OnInit {
 
   constructor() { }
 
-  //@ViewChild('bs') div:any;
+  @ViewChild('myModal') div:any;
 
   ngOnInit() { this.init(); }
-  //ngAfterViewInit() { let bs = new bootstrap.Modal(this.div);}
+  
+  ngAfterViewInit() { this.bs = new bootstrap.Modal(this.div.nativeElement); this.bs.show();}
 
 
 
+
+  bs:any;
 
   zero:any = []; ones:any = [];two:any = []; three:any = []; four:any = []; five:any = []; six:any = []; seven:any = []; eight:any = []; nine:any = []; ten:any = []; eleven:any = []; twelve:any = [];
 
@@ -32,16 +35,20 @@ export class ExpressionComponent implements OnInit {
 
 
 
+  body = "hidden";
 
-  displaySettings = "block";
+  //displaySettings = "block";
   displayKeypad = "none";
   keyPadRequest = 0;
   clicks = 0;
   btnDisabled = false;
 
+  sClicks = 0;// times settings (gear) clicked
+
   plusSign = "+";
   hideForm = "block";
   moveExpression = "col";
+  //hideExpression = "none";
   showKeypadEntry = "none";
   keypadEntry:any = null;
   bs_icon = "bi bi-plus";
@@ -107,7 +114,7 @@ export class ExpressionComponent implements OnInit {
   attempt = 0; // logs up to two attempts at answer
 
 
-  init(){ this.multiply(); }
+  init(){ this.multiply(); this.sClicks = 1;}
 
 /*
   setTimer(event:any, time:number){
@@ -168,12 +175,27 @@ export class ExpressionComponent implements OnInit {
 
   showSettings(event:any){
 
-      this.displaySettings = "block";
+      this.bs.show();
+
+      //this.displaySettings = "block";
+      //this.hideExpression = "none";
+      this.sClicks++;
+/*
+      if(this.sClicks == 2){
+
+        this.closeSettings(event);
+        this.hideExpression = "block";
+      }
+      */
   }
 
   closeSettings(event:any){
 
-    this.displaySettings = "none";
+    //this.displaySettings = "none";
+   // this.hideExpression = "block";
+    //this.sClicks = 0;
+
+    this.bs.hide();
   }
 
   showKeypad(event:any){
@@ -222,7 +244,9 @@ resetTally(){
   start(event:any){
 
     
-     this.displaySettings = "none";
+     //this.displaySettings = "none";
+     this.bs.hide();
+     //this.hideExpression = "block";
      this.resetTally();
      this.stopTimer();
      this.startAfterTimer();
